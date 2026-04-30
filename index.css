@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --macaw: #1cb0f6;
+    --macaw-dark: #1899d6;
+    --feather: #58cc02;
+    --feather-dark: #46a302;
+    --bee: #ffc800;
+    --bee-dark: #e5a500;
+  }
+
+  body {
+    @apply font-sans text-slate-700 bg-slate-50 selection:bg-macaw/30 antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-black tracking-tight;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/50;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  }
+
+  /* Glass modal overlay - darker backdrop */
+  .glass-overlay {
+    @apply backdrop-blur-xl;
+    background: rgba(15, 23, 42, 0.5);
+  }
+}
+
+@layer components {
+  /* ================================================================
+     LOGI MATH DESIGN SYSTEM v2 — Premium Gamification
+     ================================================================ */
+
+  /* --- 3D Bouncy Button (Core) --- */
+  .btn-duo {
+    @apply relative inline-flex items-center justify-center font-black uppercase tracking-wider 
+           transition-all duration-150 rounded-2xl border-b-4 
+           active:border-b-0 active:translate-y-1 active:scale-[0.97] 
+           select-none;
+  }
+
+  .btn-primary { 
+    @apply btn-duo bg-feather text-white border-feather-dark 
+           hover:brightness-110 active:shadow-inner
+           shadow-[0_4px_14px_rgba(88,204,2,0.3)]; 
+  }
+  .btn-secondary { 
+    @apply btn-duo bg-macaw text-white border-macaw-dark 
+           hover:brightness-110 
+           shadow-[0_4px_14px_rgba(28,176,246,0.3)]; 
+  }
+  .btn-outline { 
+    @apply btn-duo bg-white text-slate-600 border-2 border-b-4 border-slate-200 
+           hover:bg-slate-50 active:border-b-2; 
+  }
+
+  /* --- Bouncy Card (Spatial) --- */
+  .card-duo {
+    @apply bg-white border-2 border-b-4 border-slate-200 rounded-3xl p-6 
+           transition-all duration-200
+           shadow-[0_4px_20px_rgba(0,0,0,0.03)]
+           hover:translate-y-[-2px] hover:border-slate-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]
+           active:translate-y-[1px] active:border-b-2;
+  }
+
+  /* --- Spatial Card (No bounce, for data views/guru) --- */
+  .card-spatial {
+    @apply bg-white border border-slate-200 rounded-xl p-6 
+           shadow-[0_2px_12px_rgba(0,0,0,0.03)]
+           transition-all duration-200
+           hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)];
+  }
+
+  /* --- Progress Bar --- */
+  .progress-duo {
+    @apply h-4 bg-slate-100 rounded-full overflow-hidden border border-slate-200 shadow-inner;
+  }
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-bee to-fox rounded-full transition-all duration-1000 ease-out;
+  }
+
+  /* --- Math Question Container (Smart Whitespace) --- */
+  .question-container {
+    @apply bg-white p-8 md:p-10 rounded-3xl border-2 border-slate-100 
+           shadow-[0_4px_20px_rgba(0,0,0,0.03)]
+           text-lg md:text-xl font-semibold text-slate-800 leading-relaxed;
+  }
+
+  /* --- Option Button (Test/Quiz) --- */
+  .option-btn {
+    @apply w-full p-5 rounded-2xl border-2 border-b-4 text-left font-bold 
+           text-base transition-all duration-150 flex items-center gap-4
+           border-slate-200 bg-white text-slate-600 
+           hover:bg-slate-50 hover:border-slate-300
+           active:translate-y-[1px] active:border-b-2;
+  }
+  .option-btn-selected {
+    @apply border-macaw bg-macaw-light/15 text-macaw-dark shadow-md border-b-4;
+  }
+  .option-btn-correct {
+    @apply !bg-feather-light/20 !border-feather !text-feather-dark !border-b-4;
+  }
+  .option-btn-incorrect {
+    @apply !bg-cardinal-light/20 !border-cardinal !text-cardinal-dark !border-b-4;
+  }
+
+  /* --- Option Circle Indicator (A, B, C, D) --- */
+  .option-indicator {
+    @apply w-9 h-9 shrink-0 border-2 rounded-full flex items-center justify-center 
+           text-sm font-black border-current bg-white;
+  }
+}
+
+/* ================================================================
+   ANIMATIONS & KEYFRAMES
+   ================================================================ */
+
+/* Shimmer (Skeleton Loading) */
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* Slow Bounce (Intro Icons) */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(-5%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+  50% { transform: translateY(0); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 3s infinite;
+}
+
+/* Shake (Wrong Answer) */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* Correct Answer Pulse */
+@keyframes correct-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(88, 204, 2, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(88, 204, 2, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(88, 204, 2, 0); }
+}
+.animate-correct-pulse {
+  animation: correct-pulse 0.6s ease-out;
+}
+
+/* ================================================================
+   SCROLLBAR
+   ================================================================ */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { 
+  background-color: #e2e8f0; 
+  border-radius: 20px; 
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background-color: #cbd5e1; }
+
+/* ================================================================
+   KaTeX (Math Rendering)
+   ================================================================ */
+.katex { 
+  font-size: 1.15em !important; 
+  line-height: 1.6 !important;
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Dynamic Blue rounded background -->
+  <rect width="120" height="120" rx="28" fill="#1cb0f6" />
+  
+  <!-- Owl base (white, representing wisdom and math) -->
+  <path d="M30 60 C 30 10, 45 20, 60 35 C 75 20, 90 10, 90 60 C 95 95, 85 100, 60 100 C 35 100, 25 95, 30 60 Z" fill="#ffffff" />
+  
+  <!-- Owl inner eyes (Feather green) -->
+  <circle cx="46" cy="60" r="12" fill="#58cc02" />
+  <circle cx="74" cy="60" r="12" fill="#58cc02" />
+  
+  <!-- Pupils -->
+  <circle cx="46" cy="60" r="5" fill="#1e293b" />
+  <circle cx="74" cy="60" r="5" fill="#1e293b" />
+  
+  <!-- Beak (Bee yellow) -->
+  <polygon points="53,70 67,70 60,82" fill="#ffc800" />
+  
+  <!-- Math Symbol Details -->
+  <!-- Plus Symbol (Left Ear) -->
+  <path d="M33 40 L43 40 M38 35 L38 45" stroke="#ff4b4b" stroke-width="4" stroke-linecap="round"/> 
+  <!-- Minus Symbol (Right Ear) -->
+  <path d="M77 40 L87 40" stroke="#ff9600" stroke-width="4" stroke-linecap="round"/> 
+</svg>
