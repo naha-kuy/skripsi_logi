@@ -409,8 +409,8 @@ export const MazeGame: React.FC<MazeGameProps> = ({ userData, mode, onExit }) =>
                   <div key={`${r}-${c}`} className={`relative ${bgClass} flex items-center justify-center`}>
                     {tile === 0 && <div className="w-1.5 h-1.5 bg-slate-700 rounded-full opacity-50"></div>}
                     {tile === 1 && (<div className="absolute inset-1 bg-blue-900/50 border-2 border-blue-500 rounded-md shadow-sm z-10"></div>)}
-                    {tile === 2 && (<div className="w-10 h-10 bg-cardinal rounded-xl border-b-4 border-cardinal-dark flex items-center justify-center shadow-lg z-10 animate-bounce"><Lock className="text-white" size={20} /></div>)}
-                    {tile === 3 && (<div className="w-10 h-10 bg-feather rounded-xl border-b-4 border-feather-dark flex items-center justify-center shadow-lg z-10 animate-bounce"><Flag className="text-white" size={24} fill="currentColor" /></div>)}
+                    {tile === 2 && (<div className="w-10 h-10 bg-cardinal rounded-xl border-2 border-cardinal-dark flex items-center justify-center shadow-lg z-10 animate-bounce"><Lock className="text-white" size={20} /></div>)}
+                    {tile === 3 && (<div className="w-10 h-10 bg-feather rounded-xl border-2 border-feather-dark flex items-center justify-center shadow-lg z-10 animate-bounce"><Flag className="text-white" size={24} fill="currentColor" /></div>)}
                     {tile === 5 && (<div className="w-10 h-10 bg-slate-700/30 rounded-xl border-2 border-dashed border-slate-500 flex items-center justify-center"><div className="w-2 h-2 bg-feather rounded-full"></div></div>)}
                   </div>
                 );

@@ -63,17 +63,17 @@ export const Leaderboard: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 pb-20">
+    <div className="max-w-4xl mx-auto pb-20">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-extrabold text-slate-700 mb-2">Papan Peringkat</h1>
-        <p className="text-slate-400 font-bold">Raih XP sebanyak mungkin untuk naik ke puncak!</p>
+        <p className="text-slate-500 font-medium">Raih XP sebanyak mungkin untuk naik ke puncak!</p>
       </div>
 
       <div className="bg-white border-2 border-slate-200 rounded-2xl overflow-hidden shadow-sm">
         {loading ? (
-           <div className="p-8 text-center font-bold text-slate-400">Memuat peringkat...</div>
+           <div className="p-8 text-center font-bold text-slate-500">Memuat peringkat...</div>
         ) : students.length === 0 ? (
-           <div className="p-8 text-center font-bold text-slate-400">Belum ada data siswa.</div>
+           <div className="p-8 text-center font-bold text-slate-500">Belum ada data siswa.</div>
         ) : (
             students.map((student, index) => {
                 return (

@@ -170,7 +170,7 @@ export const PracticeZone: React.FC<PracticeZoneProps> = ({ userData, onBack }) 
                                 key={idx}
                                 onClick={() => !isChecked && setSelectedOption(opt)}
                                 disabled={isChecked}
-                                className={`p-4 rounded-2xl border-b-4 border-2 text-lg font-bold text-left transition-all active:scale-[0.98] ${buttonStyle}`}
+                                className={`p-4 rounded-2xl border-2 text-lg font-bold text-left transition-all active:scale-[0.98] shadow-sm hover:shadow ${buttonStyle}`}
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="w-8 h-8 rounded-lg border-2 border-current flex items-center justify-center text-sm opacity-70">

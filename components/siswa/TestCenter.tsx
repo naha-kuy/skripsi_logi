@@ -38,42 +38,40 @@ export const TestCenter: React.FC<TestCenterProps> = ({ onNavigate }) => {
     }
 
     return (
-        <div className="max-w-5xl mx-auto p-6 md:p-10">
+        <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
                 <h1 className="text-4xl font-extrabold text-slate-800 mb-4">Pusat Evaluasi Ujian</h1>
                 <p className="text-slate-500 font-medium">Ikuti Pre-Test sebelum memulai pembelajaran, dan Post-Test untuk mengukur pemahaman akhirmu.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Pretest Card */}
-                <div className="bg-white rounded-3xl p-8 border-2 border-indigo-100 shadow-sm flex flex-col items-center text-center hover:border-indigo-300 transition-colors">
-                    <div className="w-20 h-20 bg-indigo-100 text-indigo-500 rounded-full flex items-center justify-center mb-6">
+                <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm flex flex-col items-center text-center hover:border-macaw-light transition-colors">
+                    <div className="w-20 h-20 bg-macaw-light/20 text-macaw rounded-full flex items-center justify-center mb-6">
                         <BookOpen size={40} />
                     </div>
                     <h2 className="text-2xl font-bold text-slate-800 mb-2">Pre-Test Awal</h2>
-                    <p className="text-slate-500 mb-8 flex-1">
+                    <p className="text-slate-500 mb-8 flex-1 font-medium">
                         Kerjakan kuis ini untuk mengetahui sejauh mana kamu memahami materi sebelum belajar di kelas.
                     </p>
                     <button 
                        onClick={() => setActiveTest('pretest')}
-                       className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-4 rounded-2xl shadow-[0_4px_0_0_rgba(79,70,229,1)] active:shadow-none active:translate-y-1 transition-all"
+                       className="w-full bg-macaw hover:bg-macaw-dark text-white font-bold py-4 rounded-2xl transition-all shadow-sm hover:shadow-md active:-translate-y-0.5"
                     >
                         Mulai Pre-Test
                     </button>
                 </div>
 
-                {/* Posttest Card */}
-                <div className="bg-white rounded-3xl p-8 border-2 border-sky-100 shadow-sm flex flex-col items-center text-center hover:border-sky-300 transition-colors">
-                    <div className="w-20 h-20 bg-sky-100 text-sky-500 rounded-full flex items-center justify-center mb-6">
+                <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm flex flex-col items-center text-center hover:border-feather-light transition-colors">
+                    <div className="w-20 h-20 bg-feather-light/20 text-feather-dark rounded-full flex items-center justify-center mb-6">
                         <Trophy size={40} />
                     </div>
                     <h2 className="text-2xl font-bold text-slate-800 mb-2">Post-Test Akhir</h2>
-                    <p className="text-slate-500 mb-8 flex-1">
+                    <p className="text-slate-500 mb-8 flex-1 font-medium">
                         Uji kemampuanmu setelah menyelesaikan seluruh materi. Dapatkan nilai terbaikmu!
                     </p>
                     <button 
                        onClick={() => setActiveTest('posttest')}
-                       className="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 rounded-2xl shadow-[0_4px_0_0_rgba(14,165,233,1)] active:shadow-none active:translate-y-1 transition-all"
+                       className="w-full bg-feather hover:bg-feather-dark text-white font-bold py-4 rounded-2xl transition-all shadow-sm hover:shadow-md active:-translate-y-0.5"
                     >
                         Mulai Post-Test
                     </button>

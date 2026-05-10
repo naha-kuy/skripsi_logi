@@ -118,7 +118,7 @@ export const ContentManager: React.FC = () => {
   };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-8">
+    <div className="max-w-6xl mx-auto space-y-8">
       <div className="flex justify-between items-center">
         <div>
           <h2 className="text-3xl font-black text-slate-800 flex items-center gap-2">
@@ -177,7 +177,7 @@ export const ContentManager: React.FC = () => {
           setIsEditing={setIsEditing}
         />
       ) : (
-        <div className="bg-white rounded-3xl border-2 border-slate-200 shadow-sm overflow-hidden">
+        <div className="data-table-container">
           {loading ? (
             <div className="p-8 text-center text-slate-500">Memuat data...</div>
           ) : questions.length === 0 ? (
@@ -233,14 +233,14 @@ export const ContentManager: React.FC = () => {
       ))}
       
       {(activeTab as string) === 'lessons' && (
-        <div className="bg-white p-8 rounded-3xl border-2 border-slate-200 shadow-sm text-center">
+        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center">
           <h3 className="text-xl font-bold text-slate-700 mb-2">Manajemen Materi (Segera Hadir)</h3>
           <p className="text-slate-500">Fitur untuk menambah dan mengedit materi pembelajaran per bab.</p>
         </div>
       )}
 
       {(activeTab as string) === 'units' && (
-        <div className="bg-white p-8 rounded-3xl border-2 border-slate-200 shadow-sm text-center">
+        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center">
           <h3 className="text-xl font-bold text-slate-700 mb-2">Manajemen Bab (Segera Hadir)</h3>
           <p className="text-slate-500">Fitur untuk mengatur urutan bab dan topik utama.</p>
         </div>

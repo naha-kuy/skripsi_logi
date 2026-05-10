@@ -88,7 +88,7 @@ export const Register: React.FC<RegisterProps> = ({ onRegisterSuccess, onSwitchT
 
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 font-sans">
-      <div className="bg-white rounded-3xl shadow-xl border-2 border-slate-200 max-w-md w-full p-8">
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 max-w-md w-full p-8">
         <div className="text-center mb-6">
           <h1 className="text-3xl font-extrabold text-feather mb-2">Buat Akun</h1>
           <p className="text-slate-400 font-bold">Gabung Logi Math sekarang!</p>
@@ -120,13 +120,13 @@ export const Register: React.FC<RegisterProps> = ({ onRegisterSuccess, onSwitchT
           <div>
             <div className="relative">
               <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-              <input type="text" required value={username} onChange={(e) => setUsername(e.target.value)} className="w-full pl-12 pr-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400" placeholder="Nama Pengguna" />
+              <input type="text" required value={username} onChange={(e) => setUsername(e.target.value)} className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400" placeholder="Nama Pengguna" />
             </div>
           </div>
           <div>
             <div className="relative">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-              <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full pl-12 pr-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400" placeholder="Alamat Surel" />
+              <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400" placeholder="Alamat Surel" />
             </div>
           </div>
           
@@ -137,7 +137,7 @@ export const Register: React.FC<RegisterProps> = ({ onRegisterSuccess, onSwitchT
                   <select 
                       value={grade} 
                       onChange={(e) => setGrade(e.target.value)}
-                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 appearance-none"
+                      className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 appearance-none"
                   >
                       <option value="7">Kelas 7 SMP</option>
                       <option value="8">Kelas 8 SMP</option>
@@ -150,7 +150,7 @@ export const Register: React.FC<RegisterProps> = ({ onRegisterSuccess, onSwitchT
             <div>
                <div className="relative">
                   <GraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                  <input type="text" required value={schoolName} onChange={(e) => setSchoolName(e.target.value)} className="w-full pl-12 pr-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400" placeholder="Nama Sekolah" />
+                  <input type="text" required value={schoolName} onChange={(e) => setSchoolName(e.target.value)} className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400" placeholder="Nama Sekolah" />
                </div>
                <p className="text-xs text-slate-400 mt-2 ml-2 font-bold">* Kode Kelas otomatis akan digenerate</p>
             </div>
@@ -158,7 +158,7 @@ export const Register: React.FC<RegisterProps> = ({ onRegisterSuccess, onSwitchT
           <div>
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-              <input type={showPassword ? 'text' : 'password'} required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} className="w-full pl-12 pr-12 py-3 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400" placeholder="Kata Sandi" />
+              <input type={showPassword ? 'text' : 'password'} required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} className="w-full pl-12 pr-12 py-3 bg-white border border-slate-200 rounded-xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400" placeholder="Kata Sandi" />
               <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
@@ -167,7 +167,7 @@ export const Register: React.FC<RegisterProps> = ({ onRegisterSuccess, onSwitchT
           <div>
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-              <input type={showPassword ? 'text' : 'password'} required minLength={6} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className={`w-full pl-12 pr-12 py-3 bg-slate-50 border-2 rounded-2xl focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400 ${password && confirmPassword && password !== confirmPassword ? 'border-cardinal' : 'border-slate-200 focus:border-macaw'}`} placeholder="Konfirmasi Kata Sandi" />
+              <input type={showPassword ? 'text' : 'password'} required minLength={6} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className={`w-full pl-12 pr-12 py-3 bg-white border rounded-xl focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400 ${password && confirmPassword && password !== confirmPassword ? 'border-cardinal' : 'border-slate-200 focus:border-macaw'}`} placeholder="Konfirmasi Kata Sandi" />
             </div>
             {password && confirmPassword && password !== confirmPassword && (
                 <p className="text-xs text-cardinal font-bold mt-1 ml-2">Kata sandi tidak cocok</p>

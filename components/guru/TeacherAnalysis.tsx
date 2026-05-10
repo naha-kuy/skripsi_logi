@@ -97,7 +97,7 @@ export const TeacherAnalysis: React.FC = () => {
 
     return (
         <div className="space-y-6 animate-fade-in">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-3xl border-2 border-slate-100 shadow-sm">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                 <div>
                     <h2 className="text-2xl font-black text-slate-800 flex items-center gap-3">
                         <Activity className="text-macaw" />
@@ -151,7 +151,7 @@ export const TeacherAnalysis: React.FC = () => {
                     </div>
 
             {/* Tabel Data Langsung */}
-            <div className="bg-white rounded-3xl border-2 border-slate-100 shadow-sm overflow-hidden flex flex-col">
+            <div className="data-table-container flex flex-col">
                 <div className="p-4 border-b-2 border-slate-100 flex justify-between items-center bg-slate-50">
                     <h3 className="font-extrabold text-slate-700">Tabel Jawaban Real-Time</h3>
                     <div className="relative">

@@ -105,7 +105,7 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({ userDa
 
   return (
     <div className="max-w-6xl mx-auto space-y-6 animate-fade-in">
-      <div className="flex items-center justify-between bg-slate-800 text-white p-6 rounded-3xl shadow-lg border-b-4 border-slate-900">
+      <div className="flex items-center justify-between bg-slate-800 text-white p-6 rounded-2xl shadow-sm border border-slate-700">
         <div>
           <h1 className="text-3xl font-black tracking-tight flex items-center gap-3">
             <ShieldCheck className="text-macaw" size={36} />
@@ -147,11 +147,11 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({ userDa
         </div>
       </div>
 
-      <div className="card-spatial overflow-hidden p-0">
+      <div className="data-table-container p-0">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-100 text-slate-500 font-extrabold uppercase tracking-wider text-sm border-b-2 border-slate-200">
+              <tr className="bg-slate-50 text-slate-500 font-bold uppercase tracking-wider text-sm border-b border-slate-200">
                 <th className="p-4">Pengguna</th>
                 <th className="p-4">Role / Info</th>
                 <th className="p-4">Statistik</th>

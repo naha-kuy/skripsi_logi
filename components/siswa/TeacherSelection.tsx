@@ -71,21 +71,21 @@ export const TeacherSelection: React.FC<TeacherSelectionProps> = ({ onSelectTeac
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
          <Loader2 className="animate-spin text-macaw" size={48} />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-700 flex flex-col font-sans">
       
       {/* Header */}
-      <div className="p-6 flex justify-between items-center bg-slate-900">
+      <div className="p-6 flex justify-between items-center bg-white border-b border-slate-200">
         <h1 className="text-3xl font-extrabold text-macaw tracking-tight">LOGI MATH</h1>
         <button 
           onClick={onLogout}
-          className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-full text-slate-300 font-bold transition-all"
+          className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-600 font-bold transition-all"
         >
           <LogOut size={18} />
           Keluar
@@ -93,7 +93,7 @@ export const TeacherSelection: React.FC<TeacherSelectionProps> = ({ onSelectTeac
       </div>
 
       <div className="flex-1 max-w-5xl mx-auto w-full px-6 py-12 flex flex-col">
-        <h2 className="text-4xl text-center font-bold mb-12 text-slate-100">Siapa guru yang ingin Anda pilih?</h2>
+        <h2 className="text-4xl text-center font-bold mb-12 text-slate-800">Siapa guru yang ingin Anda pilih?</h2>
         
         {error && (
           <div className="mb-8 p-4 bg-red-900/50 border border-red-500 rounded-2xl text-center text-red-200 w-full max-w-md mx-auto">
@@ -109,7 +109,7 @@ export const TeacherSelection: React.FC<TeacherSelectionProps> = ({ onSelectTeac
                 onClick={() => handleSelect(teacher.id!)}
                 className="flex flex-col items-center group transition-all"
               >
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-3xl bg-slate-800 flex items-center justify-center border-4 border-transparent group-hover:border-white transition-all overflow-hidden mb-4 shadow-xl">
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-3xl bg-slate-100 flex items-center justify-center border-4 border-transparent group-hover:border-macaw transition-all overflow-hidden mb-4 shadow-sm group-hover:shadow-md">
                   {teacher.avatar_config ? (
                     <Avatar config={teacher.avatar_config} className="w-full h-full scale-110" />
                   ) : (
@@ -118,7 +118,7 @@ export const TeacherSelection: React.FC<TeacherSelectionProps> = ({ onSelectTeac
                     </div>
                   )}
                 </div>
-                <span className="text-slate-400 group-hover:text-white font-bold text-xl transition-colors">
+                <span className="text-slate-600 group-hover:text-macaw font-bold text-xl transition-colors">
                   {teacher.username}
                 </span>
                 <span className="text-slate-500 text-sm font-semibold">

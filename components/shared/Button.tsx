@@ -25,14 +25,14 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   ...props 
 }) => {
-  const baseStyles = "inline-flex items-center justify-center font-extrabold rounded-2xl transition-all duration-150 active:translate-y-1 active:scale-[0.97] focus-visible:ring-4 focus-visible:ring-macaw-light/50 focus:outline-none uppercase tracking-wider";
+  const baseStyles = "inline-flex items-center justify-center font-bold rounded-2xl transition-all duration-150 active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-macaw-light/50 focus:outline-none uppercase tracking-wider";
   
   const variants = {
-    primary: "bg-feather text-white border-b-4 border-feather-dark active:border-b-0 hover:brightness-110 shadow-[0_4px_14px_rgba(88,204,2,0.3)]",
-    secondary: "bg-macaw text-white border-b-4 border-macaw-dark active:border-b-0 hover:brightness-110 shadow-[0_4px_14px_rgba(28,176,246,0.3)]",
-    danger: "bg-cardinal text-white border-b-4 border-cardinal-dark active:border-b-0 hover:brightness-110 shadow-[0_4px_14px_rgba(255,75,75,0.3)]",
-    outline: "bg-white text-slate-700 border-2 border-b-4 border-slate-200 active:border-b-2 hover:bg-slate-50",
-    ghost: "bg-transparent text-slate-500 hover:bg-slate-100 border-b-4 border-transparent active:border-b-0",
+    primary: "bg-feather text-white hover:brightness-110 shadow-sm hover:shadow-md border border-feather-dark/20 active:-translate-y-0.5",
+    secondary: "bg-macaw text-white hover:brightness-110 shadow-sm hover:shadow-md border border-macaw-dark/20 active:-translate-y-0.5",
+    danger: "bg-cardinal text-white hover:brightness-110 shadow-sm hover:shadow-md border border-cardinal-dark/20 active:-translate-y-0.5",
+    outline: "bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 shadow-sm hover:shadow-md active:-translate-y-0.5",
+    ghost: "bg-transparent text-slate-500 hover:bg-slate-100 hover:text-slate-700 active:-translate-y-0.5",
   };
 
   const sizes = {

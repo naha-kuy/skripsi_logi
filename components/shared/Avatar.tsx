@@ -81,7 +81,7 @@ export const Avatar: React.FC<AvatarProps> = ({
 
   return (
     <div 
-      className={`rounded-full overflow-hidden border-2 border-b-4 border-slate-200 shadow-sm ${className}`}
+      className={`rounded-full overflow-hidden border border-slate-200 shadow-sm ${className}`}
       style={{ width: size, height: size, backgroundColor: bgColor }}
     >
       <svg viewBox="0 0 120 120" width="100%" height="100%">

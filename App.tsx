@@ -63,7 +63,7 @@ const ToastDisplay = () => {
   };
 
   return (
-    <div className={`fixed top-4 left-1/2 -translate-x-1/2 z-[1100] flex items-center gap-3 px-6 py-3 rounded-full shadow-xl animate-in fade-in slide-in-from-top-4 duration-300 ${bgColors[toast.type]}`}>
+    <div className={`fixed top-4 right-4 z-[1100] flex items-center gap-3 px-6 py-3 rounded-xl shadow-xl animate-in fade-in slide-in-from-top-4 duration-300 ${bgColors[toast.type]}`}>
       {icons[toast.type]}
       <span className="text-white font-bold text-sm">{toast.message}</span>
     </div>
@@ -311,7 +311,7 @@ export const AppContent: React.FC = () => {
           />
         )}
 
-        <main className={`flex-1 relative overflow-x-hidden min-h-screen transition-all duration-300 ${isFullScreenGame ? 'p-0' : ''}`}>
+        <main className={`flex-1 relative overflow-x-hidden min-h-screen transition-all duration-300 ${isFullScreenGame ? 'p-0' : 'p-6 lg:p-8'}`}>
             {/* Mobile Header (Hide on Fullscreen Game) */}
             {!isFullScreenGame && (
               <div className="md:hidden p-4 bg-white border-b-2 border-slate-200 flex items-center gap-3 sticky top-0 z-10">

@@ -48,7 +48,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess, onSwitchToRegister
 
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 font-sans">
-      <div className="bg-white rounded-3xl shadow-xl border-2 border-slate-200 max-w-md w-full p-8">
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 max-w-md w-full p-8">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-extrabold text-feather mb-2">Selamat Datang!</h1>
           <p className="text-slate-400 font-bold">Lanjutkan progres belajar matematikamu.</p>
@@ -67,7 +67,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess, onSwitchToRegister
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400"
+                className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400"
                 placeholder="Alamat Surel"
               />
             </div>
@@ -80,7 +80,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess, onSwitchToRegister
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-12 pr-12 py-3 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400"
+                className="w-full pl-12 pr-12 py-3 bg-white border border-slate-200 rounded-xl focus:border-macaw focus:ring-0 outline-none transition-all font-bold text-slate-700 placeholder-slate-400"
                 placeholder="Kata Sandi"
               />
               <button

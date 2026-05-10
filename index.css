@@ -43,9 +43,9 @@
 
   /* --- 3D Bouncy Button (Core) --- */
   .btn-duo {
-    @apply relative inline-flex items-center justify-center font-black uppercase tracking-wider 
-           transition-all duration-150 rounded-2xl border-b-4 
-           active:border-b-0 active:translate-y-1 active:scale-[0.97] 
+    @apply relative inline-flex items-center justify-center font-bold uppercase tracking-wider 
+           transition-all duration-150 rounded-2xl border border-transparent
+           active:-translate-y-0.5 active:scale-[0.99] shadow-sm hover:shadow-md
            select-none;
   }
 
@@ -60,17 +60,16 @@
            shadow-[0_4px_14px_rgba(28,176,246,0.3)]; 
   }
   .btn-outline { 
-    @apply btn-duo bg-white text-slate-600 border-2 border-b-4 border-slate-200 
-           hover:bg-slate-50 active:border-b-2; 
+    @apply btn-duo bg-white text-slate-600 border-2 border-slate-200 
+           hover:bg-slate-50 hover:border-slate-300; 
   }
 
   /* --- Bouncy Card (Spatial) --- */
   .card-duo {
-    @apply bg-white border-2 border-b-4 border-slate-200 rounded-3xl p-6 
+    @apply bg-white border-2 border-slate-200 rounded-2xl p-6 
            transition-all duration-200
-           shadow-[0_4px_20px_rgba(0,0,0,0.03)]
-           hover:translate-y-[-2px] hover:border-slate-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]
-           active:translate-y-[1px] active:border-b-2;
+           shadow-sm
+           hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md;
   }
 
   /* --- Spatial Card (No bounce, for data views/guru) --- */
@@ -91,27 +90,31 @@
 
   /* --- Math Question Container (Smart Whitespace) --- */
   .question-container {
-    @apply bg-white p-8 md:p-10 rounded-3xl border-2 border-slate-100 
-           shadow-[0_4px_20px_rgba(0,0,0,0.03)]
+    @apply bg-white p-8 md:p-10 rounded-2xl border border-slate-200 
+           shadow-sm
            text-lg md:text-xl font-semibold text-slate-800 leading-relaxed;
   }
 
   /* --- Option Button (Test/Quiz) --- */
   .option-btn {
-    @apply w-full p-5 rounded-2xl border-2 border-b-4 text-left font-bold 
+    @apply w-full p-5 rounded-2xl border-2 text-left font-bold 
            text-base transition-all duration-150 flex items-center gap-4
            border-slate-200 bg-white text-slate-600 
-           hover:bg-slate-50 hover:border-slate-300
-           active:translate-y-[1px] active:border-b-2;
+           hover:bg-slate-50 hover:border-slate-300;
   }
   .option-btn-selected {
-    @apply border-macaw bg-macaw-light/15 text-macaw-dark shadow-md border-b-4;
+    @apply border-macaw bg-macaw-light/15 text-macaw-dark shadow-md;
   }
   .option-btn-correct {
-    @apply !bg-feather-light/20 !border-feather !text-feather-dark !border-b-4;
+    @apply !bg-feather-light/20 !border-feather !text-feather-dark;
   }
   .option-btn-incorrect {
-    @apply !bg-cardinal-light/20 !border-cardinal !text-cardinal-dark !border-b-4;
+    @apply !bg-cardinal-light/20 !border-cardinal !text-cardinal-dark;
+  }
+
+  /* --- Data Table Container --- */
+  .data-table-container {
+    @apply bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden;
   }
 
   /* --- Option Circle Indicator (A, B, C, D) --- */

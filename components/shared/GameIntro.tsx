@@ -72,7 +72,7 @@ export const GameIntro: React.FC<GameIntroProps> = ({
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <button 
                             onClick={() => setSelectedMode('solo')}
-                            className={`p-4 rounded-2xl border-2 border-b-4 text-left transition-all ${
+                            className={`p-4 rounded-xl border-2 text-left transition-all shadow-sm active:-translate-y-0.5 ${
                                 selectedMode === 'solo' 
                                 ? `${borderTheme} bg-slate-50 ring-2 ring-offset-2 ring-slate-200` 
                                 : 'border-slate-200 hover:bg-slate-50'
@@ -85,7 +85,7 @@ export const GameIntro: React.FC<GameIntroProps> = ({
 
                         <button 
                             onClick={() => setSelectedMode('coop')}
-                            className={`p-4 rounded-2xl border-2 border-b-4 text-left transition-all ${
+                            className={`p-4 rounded-xl border-2 text-left transition-all shadow-sm active:-translate-y-0.5 ${
                                 selectedMode === 'coop' 
                                 ? `${borderTheme} bg-slate-50 ring-2 ring-offset-2 ring-slate-200` 
                                 : 'border-slate-200 hover:bg-slate-50'
@@ -98,7 +98,7 @@ export const GameIntro: React.FC<GameIntroProps> = ({
 
                         <button 
                             onClick={() => setSelectedMode('duel')}
-                            className={`p-4 rounded-2xl border-2 border-b-4 text-left transition-all ${
+                            className={`p-4 rounded-xl border-2 text-left transition-all shadow-sm active:-translate-y-0.5 ${
                                 selectedMode === 'duel' 
                                 ? `${borderTheme} bg-slate-50 ring-2 ring-offset-2 ring-slate-200` 
                                 : 'border-slate-200 hover:bg-slate-50'

@@ -52,14 +52,14 @@ export const GameHUD: React.FC<GameHUDProps> = ({
         <div className="flex gap-2">
             <button 
                 onClick={onExit} 
-                className="bg-white p-2.5 rounded-2xl border-b-4 border-slate-200 hover:bg-red-50 hover:border-red-200 hover:text-cardinal text-slate-400 transition-all shadow-sm active:border-b-0 active:translate-y-1"
+                className="bg-white p-2.5 rounded-xl border border-slate-200 hover:bg-red-50 hover:border-red-200 hover:text-cardinal text-slate-400 transition-all shadow-sm active:-translate-y-px"
                 title="Keluar Permainan"
             >
                 <X size={24} strokeWidth={3} />
             </button>
 
             {timeLeft !== undefined && (
-                <div className={`bg-white px-4 py-2 rounded-2xl border-b-4 border-slate-200 shadow-sm flex items-center gap-2 transition-colors ${timeLeft < 30 ? 'bg-red-50 border-red-200 animate-pulse' : ''}`}>
+                <div className={`bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm flex items-center gap-2 transition-colors ${timeLeft < 30 ? 'bg-red-50 border-red-200 animate-pulse' : ''}`}>
                     <Clock size={20} className={timeLeft < 30 ? 'text-cardinal' : 'text-slate-400'} strokeWidth={2.5}/>
                     <span className={`font-black text-xl font-mono ${timeLeft < 30 ? 'text-cardinal' : 'text-slate-700'}`}>
                         {formatTime(timeLeft)}
@@ -72,7 +72,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
       {/* KANAN: Nyawa & Skor */}
       <div className="flex flex-col items-end gap-2 pointer-events-auto">
         {/* Nyawa */}
-        <div className={`flex gap-1 bg-white/90 backdrop-blur-md p-2 rounded-2xl border-b-4 border-slate-200 shadow-sm transition-transform duration-100 ${isShaking ? 'translate-x-[-5px] border-cardinal' : ''}`}>
+        <div className={`flex gap-1 bg-white/90 backdrop-blur-md p-2 rounded-xl border border-slate-200 shadow-sm transition-transform duration-100 ${isShaking ? 'translate-x-[-5px] border-cardinal' : ''}`}>
             {Array.from({ length: maxHearts }).map((_, i) => {
                 const isActive = i < hearts;
                 return (
@@ -88,7 +88,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
         </div>
 
         {/* Skor */}
-        <div className="bg-white px-5 py-2.5 rounded-2xl border-b-4 border-slate-200 shadow-sm min-w-[100px]">
+        <div className="bg-white px-5 py-2.5 rounded-xl border border-slate-200 shadow-sm min-w-[100px]">
             <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider mb-0.5 text-right">
                 {mode === 'coop' ? 'Team Score' : 'Total XP'}
             </div>

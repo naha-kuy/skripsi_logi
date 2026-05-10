@@ -93,7 +93,7 @@ export const UnitPath: React.FC<UnitPathProps> = ({ units, completedLessonIds, o
             </p>
             <button
                 onClick={() => onStartPretest && onStartPretest()}
-                className="w-full py-4 rounded-2xl font-black text-lg uppercase tracking-wide transition-all active:scale-95 border-b-4 bg-white text-bee-dark border-slate-200 hover:bg-slate-50 hover:border-slate-300 shadow-lg"
+                className="w-full py-4 rounded-2xl font-bold text-lg uppercase tracking-wide transition-all active:scale-[0.98] bg-white text-bee-dark border border-slate-200 hover:bg-slate-50 hover:border-slate-300 shadow-sm hover:shadow"
             >
                 Mulai Pre-test
             </button>
@@ -131,7 +131,7 @@ export const UnitPath: React.FC<UnitPathProps> = ({ units, completedLessonIds, o
                         onClick={() => !locked && onStartLesson(lesson)}
                         disabled={locked}
                         className={`
-                        w-20 h-20 rounded-full flex items-center justify-center relative transition-transform active:scale-95 group border-b-4 shadow-xl
+                        w-20 h-20 rounded-full flex items-center justify-center relative transition-transform active:scale-95 group shadow-sm border hover:shadow-md
                         ${locked 
                             ? 'bg-slate-200 border-slate-300 text-slate-400 cursor-not-allowed grayscale' 
                             : completed 
@@ -189,9 +189,9 @@ export const UnitPath: React.FC<UnitPathProps> = ({ units, completedLessonIds, o
             <button
                 onClick={() => isAllCompleted && onStartPosttest && onStartPosttest()}
                 disabled={!isAllCompleted}
-                className={`w-full py-4 rounded-2xl font-black text-lg uppercase tracking-wide transition-all active:scale-95 border-b-4 ${
+                className={`w-full py-4 rounded-2xl font-bold text-lg uppercase tracking-wide transition-all active:scale-[0.98] border border-slate-200 shadow-sm hover:shadow ${
                     isAllCompleted 
-                    ? 'bg-white text-macaw border-slate-200 hover:bg-slate-50 hover:border-slate-300 shadow-lg' 
+                    ? 'bg-white text-macaw hover:bg-slate-50 hover:border-slate-300' 
                     : 'bg-slate-200 text-slate-400 border-slate-300 cursor-not-allowed'
                 }`}
             >

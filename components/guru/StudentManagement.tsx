@@ -210,7 +210,7 @@ export const StudentManagement: React.FC = () => {
   );
 
   return (
-    <div className="p-6 max-w-7xl mx-auto pb-20">
+    <div className="max-w-6xl mx-auto pb-20">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
            <div>
                <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
@@ -232,10 +232,10 @@ export const StudentManagement: React.FC = () => {
            </div>
        </div>
 
-       <div className="bg-white rounded-3xl shadow-sm border-2 border-slate-200 overflow-hidden">
+       <div className="data-table-container">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
-             <thead className="bg-slate-50 text-slate-500 text-xs uppercase font-extrabold tracking-wider border-b-2 border-slate-100">
+             <thead className="bg-slate-50 text-slate-500 text-xs uppercase font-bold tracking-wider border-b border-slate-200">
                <tr>
                    <th className="px-6 py-4">Profil Siswa</th>
                    <th className="px-6 py-4">Kelas</th>

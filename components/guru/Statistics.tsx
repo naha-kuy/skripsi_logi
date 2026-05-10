@@ -121,7 +121,7 @@ export const Statistics: React.FC = () => {
   }
 
   return (
-    <div className="p-6 max-w-6xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4">
+    <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4">
        <div className="flex items-center gap-4 mb-2">
            <div className="bg-slate-100 p-3 rounded-2xl text-slate-600">
                <BarChart2 size={32} />
@@ -135,7 +135,7 @@ export const Statistics: React.FC = () => {
        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Grafik Batang Vertikal - Level */}
-          <div className="bg-white p-6 rounded-3xl border-2 border-slate-100 shadow-sm relative overflow-hidden">
+          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
              <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
                  <Users size={120} />
              </div>
@@ -168,7 +168,7 @@ export const Statistics: React.FC = () => {
           </div>
 
           {/* Grafik Progress Bars Horizontal - Unit Completion */}
-          <div className="bg-white p-6 rounded-3xl border-2 border-slate-100 shadow-sm relative overflow-hidden">
+          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
              <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
                  <PieChart size={120} />
              </div>

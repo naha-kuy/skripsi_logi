@@ -241,7 +241,7 @@ export const Forum: React.FC<ForumProps> = ({ currentUserId, userRole }) => {
                         {new Date(msg.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', day: 'numeric', month: 'short'})}
                     </span>
                 </div>
-                <div className={`inline-block px-5 py-3 rounded-2xl font-bold text-sm border-b-4 border-2 ${isGuru ? 'bg-bee-light/20 text-slate-800 border-bee border-bee-dark' : isMe ? 'bg-macaw text-white border-macaw-dark' : 'bg-white text-slate-600 border-slate-200'}`}>
+                <div className={`inline-block px-5 py-3 rounded-2xl font-bold text-sm border shadow-sm ${isGuru ? 'bg-bee-light/20 text-slate-800 border-bee' : isMe ? 'bg-macaw text-white border-macaw-dark' : 'bg-white text-slate-600 border-slate-200'}`}>
                     {msg.content}
                 </div>
                 
@@ -268,7 +268,7 @@ export const Forum: React.FC<ForumProps> = ({ currentUserId, userRole }) => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto h-[calc(100vh-40px)] flex flex-col pt-6 px-4">
+    <div className="max-w-4xl mx-auto h-[calc(100vh-40px)] flex flex-col">
       <div className="flex justify-between items-center mb-4 bg-white p-4 rounded-3xl border-2 border-slate-100 shadow-sm">
           <div className="flex items-center gap-3">
               <div className="bg-macaw p-3 rounded-2xl text-white shadow-macaw-light shadow-lg"><MessageSquare size={24} /></div>
@@ -303,7 +303,7 @@ export const Forum: React.FC<ForumProps> = ({ currentUserId, userRole }) => {
             {threads.length === 0 && !loading ? (
                 <div className="flex flex-col items-center justify-center h-full text-slate-300">
                     <MessageSquare size={60} className="mb-4 opacity-50" />
-                    <p className="font-bold text-lg">Belum ada diskusi.</p>
+                    <p className="font-bold text-lg">Belum ada percakapan di forum ini.</p>
                     <p className="text-sm">Mulai percakapan baru sekarang!</p>
                 </div>
             ) : (

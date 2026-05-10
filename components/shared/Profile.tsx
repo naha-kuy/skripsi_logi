@@ -119,7 +119,7 @@ export const Profile: React.FC<ProfileProps> = ({ userData, onUpdate }) => {
     : '-';
 
   return (
-    <div className="max-w-3xl mx-auto p-6 pb-20">
+    <div className="max-w-4xl mx-auto pb-20">
       <h2 className="text-3xl font-extrabold text-slate-700 mb-8">Profil Kamu</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -145,19 +145,19 @@ export const Profile: React.FC<ProfileProps> = ({ userData, onUpdate }) => {
             <nav className="flex flex-col gap-2">
                 <button 
                     onClick={() => setActiveSection('info')}
-                    className={`p-4 rounded-2xl text-left font-bold border-2 border-b-4 transition-all ${activeSection === 'info' ? 'bg-macaw text-white border-macaw-dark' : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'}`}
+                    className={`p-4 rounded-2xl text-left font-bold border-2 transition-all ${activeSection === 'info' ? 'bg-macaw text-white border-macaw-dark' : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'}`}
                 >
                     <User size={20} className="inline mr-2 mb-1" /> Info Dasar
                 </button>
                 <button 
                     onClick={() => setActiveSection('avatar')}
-                    className={`p-4 rounded-2xl text-left font-bold border-2 border-b-4 transition-all ${activeSection === 'avatar' ? 'bg-macaw text-white border-macaw-dark' : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'}`}
+                    className={`p-4 rounded-2xl text-left font-bold border-2 transition-all ${activeSection === 'avatar' ? 'bg-macaw text-white border-macaw-dark' : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'}`}
                 >
                     <Edit2 size={20} className="inline mr-2 mb-1" /> Edit Avatar
                 </button>
                 <button 
                     onClick={() => setActiveSection('security')}
-                    className={`p-4 rounded-2xl text-left font-bold border-2 border-b-4 transition-all ${activeSection === 'security' ? 'bg-macaw text-white border-macaw-dark' : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'}`}
+                    className={`p-4 rounded-2xl text-left font-bold border-2 transition-all ${activeSection === 'security' ? 'bg-macaw text-white border-macaw-dark' : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'}`}
                 >
                     <Lock size={20} className="inline mr-2 mb-1" /> Kata Sandi
                 </button>

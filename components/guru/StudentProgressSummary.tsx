@@ -14,16 +14,8 @@ interface StudentAnswer {
 interface StudentData {
     id: string;
     username: string;
+    email?: string;
 }
-
-const CONTEXTS = [
-    { id: 'pretest', label: 'Pre-test' },
-    { id: 'u1l1', label: 'Materi U1 L1' },
-    { id: 'u1l2', label: 'Materi U1 L2' },
-    { id: 'u2l1', label: 'Materi U2 L1' },
-    { id: 'u2l2', label: 'Materi U2 L2' },
-    { id: 'posttest', label: 'Post-test' }
-];
 
 export const StudentProgressSummary: React.FC = () => {
     const { userData, showToast } = useAppContext();
@@ -61,7 +53,7 @@ export const StudentProgressSummary: React.FC = () => {
             // 2. Get student details
             const { data: studentsData, error: studentsError } = await supabase
                 .from('users_data')
-                .select('id, username')
+                .select('id, username, email')
                 .in('id', studentIds);
 
             if (studentsError) throw studentsError;
@@ -76,14 +68,10 @@ export const StudentProgressSummary: React.FC = () => {
 
             if (questionsError) throw questionsError;
 
-            // Map questions to contexts
+            // Map questions to contexts (Only Pretest and Posttest)
             const qMap: Record<string, string[]> = {
                 'pretest': (questionsData || []).filter(q => q.category === 'pretest').map(q => q.id),
-                'posttest': (questionsData || []).filter(q => q.category === 'posttest').map(q => q.id),
-                'u1l1': (questionsData || []).filter(q => q.category === 'lesson' && ['u1l1', 'u1-l1'].includes(q.lesson_id)).map(q => q.id),
-                'u1l2': (questionsData || []).filter(q => q.category === 'lesson' && ['u1l2', 'u1-l2'].includes(q.lesson_id)).map(q => q.id),
-                'u2l1': (questionsData || []).filter(q => q.category === 'lesson' && ['u2l1', 'u2-l1'].includes(q.lesson_id)).map(q => q.id),
-                'u2l2': (questionsData || []).filter(q => q.category === 'lesson' && ['u2l2', 'u2-l2', 'u2-l2-prisma'].includes(q.lesson_id)).map(q => q.id)
+                'posttest': (questionsData || []).filter(q => q.category === 'posttest').map(q => q.id)
             };
             setContextQuestions(qMap);
 
@@ -132,9 +120,46 @@ export const StudentProgressSummary: React.FC = () => {
         );
     }
 
+    const renderCircles = (qIds: string[], studentId: string) => {
+        const circles = qIds.map((qId) => {
+            const key = `${studentId}_${qId}`;
+            const ans = latestAnswers.get(key);
+            if (!ans) return 'empty';
+            return ans.is_correct ? 'correct' : 'incorrect';
+        });
+
+        return (
+            <div className="flex items-center justify-center gap-1.5 flex-wrap max-w-[200px] mx-auto">
+                {circles.map((status, i) => (
+                    <div 
+                        key={i} 
+                        className={`w-4 h-4 md:w-5 md:h-5 rounded-full shrink-0 transition-all ${
+                            status === 'correct' ? 'bg-green-500 shadow-[0_2px_0_0_#15803d]' : 
+                            status === 'incorrect' ? 'bg-red-500 shadow-[0_2px_0_0_#b91c1c]' : 
+                            'bg-slate-200 shadow-[0_2px_0_0_#cbd5e1]'
+                        }`}
+                        title={status === 'empty' ? `Soal ${i+1} (Belum)` : status === 'correct' ? `Soal ${i+1} (Benar)` : `Soal ${i+1} (Salah)`}
+                    ></div>
+                ))}
+            </div>
+        );
+    };
+
+    const getScore = (qIds: string[], studentId: string) => {
+        if (qIds.length === 0) return "-";
+        let correct = 0;
+        qIds.forEach(qId => {
+            const key = `${studentId}_${qId}`;
+            const ans = latestAnswers.get(key);
+            if (ans && ans.is_correct) correct++;
+        });
+        const percentage = Math.round((correct / qIds.length) * 100);
+        return `${percentage}%`;
+    };
+
     return (
         <div className="space-y-6">
-            <div className="bg-white p-6 md:p-8 rounded-3xl shadow-sm border-2 border-slate-100">
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
                 <div className="flex justify-end mb-6">
                     <div className="flex items-center gap-4 text-sm font-bold bg-slate-50 p-3 rounded-xl border-2 border-slate-100">
                         <div className="flex items-center gap-2"><div className="w-4 h-4 rounded-full bg-green-500"></div> Benar</div>
@@ -144,53 +169,52 @@ export const StudentProgressSummary: React.FC = () => {
                 </div>
 
                 <div className="overflow-x-auto pb-4">
-                    <table className="w-full text-left border-collapse min-w-[800px]">
+                    <table className="w-full text-left border-collapse min-w-[1000px]">
                         <thead>
                             <tr>
-                                <th className="p-4 border-b-2 border-slate-200 text-slate-500 font-extrabold uppercase text-sm tracking-wider w-48 sticky left-0 bg-white z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">Nama Siswa</th>
-                                {CONTEXTS.map(ctx => (
-                                    <th key={ctx.id} className="p-4 border-b-2 border-slate-200 text-slate-500 font-extrabold uppercase text-sm tracking-wider text-center border-l-2">
-                                        {ctx.label}
-                                    </th>
-                                ))}
+                                <th className="p-4 border-b border-slate-200 text-slate-500 font-bold uppercase text-sm tracking-wider text-center w-16">Nomor</th>
+                                <th className="p-4 border-b border-slate-200 text-slate-500 font-bold uppercase text-sm tracking-wider w-40 sticky left-0 bg-white z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">Username</th>
+                                <th className="p-4 border-b border-slate-200 text-slate-500 font-bold uppercase text-sm tracking-wider w-48">Email siswa</th>
+                                <th className="p-4 border-b border-slate-200 text-slate-500 font-bold uppercase text-sm tracking-wider text-center border-l">Pre-test</th>
+                                <th className="p-4 border-b border-slate-200 text-slate-500 font-bold uppercase text-sm tracking-wider text-center w-32">Nilai</th>
+                                <th className="p-4 border-b border-slate-200 text-slate-500 font-bold uppercase text-sm tracking-wider text-center border-l">Post-test</th>
+                                <th className="p-4 border-b border-slate-200 text-slate-500 font-bold uppercase text-sm tracking-wider text-center w-32">Nilai</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {students.map((student, idx) => (
-                                <tr key={student.id} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}>
-                                    <td className="p-4 border-b border-slate-100 font-bold text-slate-700 sticky left-0 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]" style={{ backgroundColor: idx % 2 === 0 ? '#ffffff' : '#f8fafc' }}>
-                                        {student.username}
-                                    </td>
-                                    {CONTEXTS.map(ctx => {
-                                        const qIds = contextQuestions[ctx.id] || [];
-                                        
-                                        const circles = qIds.map((qId) => {
-                                            const key = `${student.id}_${qId}`;
-                                            const ans = latestAnswers.get(key);
-                                            if (!ans) return 'empty';
-                                            return ans.is_correct ? 'correct' : 'incorrect';
-                                        });
+                            {students.map((student, idx) => {
+                                const pretestIds = contextQuestions['pretest'] || [];
+                                const posttestIds = contextQuestions['posttest'] || [];
+                                const bgRowColor = idx % 2 === 0 ? '#ffffff' : '#f8fafc';
 
-                                        return (
-                                            <td key={`${student.id}-${ctx.id}`} className="p-4 border-b border-slate-100 border-l-2 border-slate-100 text-center">
-                                                <div className="flex items-center justify-center gap-1.5 flex-wrap max-w-[200px] mx-auto">
-                                                    {circles.map((status, i) => (
-                                                        <div 
-                                                            key={i} 
-                                                            className={`w-4 h-4 md:w-5 md:h-5 rounded-full shrink-0 transition-all ${
-                                                                status === 'correct' ? 'bg-green-500 shadow-[0_2px_0_0_#15803d]' : 
-                                                                status === 'incorrect' ? 'bg-red-500 shadow-[0_2px_0_0_#b91c1c]' : 
-                                                                'bg-slate-200 shadow-[0_2px_0_0_#cbd5e1]'
-                                                            }`}
-                                                            title={status === 'empty' ? `Soal ${i+1} (Belum)` : status === 'correct' ? `Soal ${i+1} (Benar)` : `Soal ${i+1} (Salah)`}
-                                                        ></div>
-                                                    ))}
-                                                </div>
-                                            </td>
-                                        );
-                                    })}
-                                </tr>
-                            ))}
+                                return (
+                                    <tr key={student.id} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}>
+                                        <td className="p-4 border-b border-slate-100 font-bold text-slate-500 text-center">
+                                            {idx + 1}
+                                        </td>
+                                        <td className="p-4 border-b border-slate-100 font-bold text-slate-700 sticky left-0 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]" style={{ backgroundColor: bgRowColor }}>
+                                            {student.username || '-'}
+                                        </td>
+                                        <td className="p-4 border-b border-slate-100 font-bold text-slate-700">
+                                            {student.email || '-'}
+                                        </td>
+                                        
+                                        <td className="p-4 border-b border-slate-100 border-l-2 border-slate-100 text-center">
+                                            {renderCircles(pretestIds, student.id)}
+                                        </td>
+                                        <td className="p-4 border-b border-slate-100 font-bold text-slate-700 text-center">
+                                            <span className="bg-slate-100 px-3 py-1 rounded-lg text-sm">{getScore(pretestIds, student.id)}</span>
+                                        </td>
+
+                                        <td className="p-4 border-b border-slate-100 border-l-2 border-slate-100 text-center">
+                                            {renderCircles(posttestIds, student.id)}
+                                        </td>
+                                        <td className="p-4 border-b border-slate-100 font-bold text-slate-700 text-center">
+                                            <span className="bg-slate-100 px-3 py-1 rounded-lg text-sm">{getScore(posttestIds, student.id)}</span>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 </div>
@@ -198,3 +222,4 @@ export const StudentProgressSummary: React.FC = () => {
         </div>
     );
 };
+

@@ -39,33 +39,33 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   
   const studentItems = [
-    { id: 'dashboard', label: 'Beranda', icon: <Home size={28} /> }, 
-    { id: 'learn', label: 'Belajar', icon: <Hexagon size={28} /> },
-    { id: 'chatbot', label: 'LogiChat', icon: <Bot size={28} /> }, 
-    { id: 'challenges', label: 'Latihan', icon: <BrainCircuit size={28} /> }, 
-    // { id: 'maze', label: 'Labirin', icon: <Gamepad2 size={28} /> },       // Sementara disembunyikan
-    // { id: 'adventure', label: 'Petualangan', icon: <Map size={28} /> },   // Sementara disembunyikan
-    { id: 'leaderboard', label: 'Peringkat', icon: <Trophy size={28} /> },
-    { id: 'forum', label: 'Diskusi', icon: <MessageSquare size={28} /> },
-    { id: 'profile', label: 'Profil', icon: <User size={28} /> },
+    { id: 'dashboard', label: 'Beranda', icon: <Home size={22} /> }, 
+    { id: 'learn', label: 'Belajar', icon: <Hexagon size={22} /> },
+    { id: 'chatbot', label: 'LogiChat', icon: <Bot size={22} /> }, 
+    { id: 'challenges', label: 'Latihan', icon: <BrainCircuit size={22} /> }, 
+    // { id: 'maze', label: 'Labirin', icon: <Gamepad2 size={22} /> },       // Sementara disembunyikan
+    // { id: 'adventure', label: 'Petualangan', icon: <Map size={22} /> },   // Sementara disembunyikan
+    { id: 'leaderboard', label: 'Peringkat', icon: <Trophy size={22} /> },
+    { id: 'forum', label: 'Diskusi', icon: <MessageSquare size={22} /> },
+    { id: 'profile', label: 'Profil', icon: <User size={22} /> },
   ];
 
   const teacherItems = [
-    { id: 'dashboard', label: 'Beranda', icon: <LayoutDashboard size={28} /> }, // New Overview Dashboard
-    { id: 'content', label: 'Konten Soal', icon: <BookOpen size={28} /> },
-    { id: 'students', label: 'Siswa', icon: <Users size={28} /> },
-    { id: 'analysis', label: 'Analisis Kelas', icon: <FileSpreadsheet size={28} /> },
-    { id: 'activities', label: 'Log Aktivitas', icon: <Activity size={28} /> }, 
-    { id: 'statistics', label: 'Statistik', icon: <BarChart2 size={28} /> },
-    { id: 'games', label: 'Monitor Game', icon: <MonitorPlay size={28} /> },
-    { id: 'leaderboard', label: 'Peringkat', icon: <Trophy size={28} /> }, 
-    { id: 'forum', label: 'Forum Diskusi', icon: <MessageSquare size={28} /> },
-    { id: 'profile', label: 'Profil Saya', icon: <User size={28} /> },
+    { id: 'dashboard', label: 'Beranda', icon: <LayoutDashboard size={22} /> }, // New Overview Dashboard
+    { id: 'content', label: 'Konten Soal', icon: <BookOpen size={22} /> },
+    { id: 'students', label: 'Siswa', icon: <Users size={22} /> },
+    { id: 'analysis', label: 'Analisis Kelas', icon: <FileSpreadsheet size={22} /> },
+    { id: 'activities', label: 'Log Aktivitas', icon: <Activity size={22} /> }, 
+    { id: 'statistics', label: 'Statistik', icon: <BarChart2 size={22} /> },
+    { id: 'games', label: 'Monitor Game', icon: <MonitorPlay size={22} /> },
+    { id: 'leaderboard', label: 'Peringkat', icon: <Trophy size={22} /> }, 
+    { id: 'forum', label: 'Forum Diskusi', icon: <MessageSquare size={22} /> },
+    { id: 'profile', label: 'Profil Saya', icon: <User size={22} /> },
   ];
 
   const superadminItems = [
-    { id: 'superadmin', label: 'God Mode', icon: <ShieldCheck size={28} /> },
-    { id: 'profile', label: 'Profil', icon: <User size={28} /> },
+    { id: 'superadmin', label: 'Admin Panel', icon: <ShieldCheck size={22} /> },
+    { id: 'profile', label: 'Profil', icon: <User size={22} /> },
   ];
 
   const items = userData.role === 'superadmin' ? superadminItems : (userData.role === 'guru' ? teacherItems : studentItems);
@@ -80,7 +80,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         className={`
           fixed md:sticky top-0 left-0 h-screen bg-white border-r-2 border-slate-200 z-30
           transition-all duration-300 ease-in-out flex flex-col
-          ${isOpen ? 'w-64 translate-x-0' : 'w-0 -translate-x-full md:w-24 md:translate-x-0'}
+          ${isOpen ? 'w-56 translate-x-0' : 'w-0 -translate-x-full md:w-24 md:translate-x-0'}
         `}
       >
         <div className={`flex items-center gap-3 p-6 h-24 ${!isOpen && 'md:justify-center'}`}>
@@ -115,7 +115,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               key={item.id}
               onClick={() => onNavigate(item.id)}
               className={`
-                w-full flex items-center gap-4 px-4 py-3 rounded-2xl transition-all border-2 border-transparent uppercase font-bold tracking-wide text-sm
+                w-full flex items-center gap-4 px-4 py-3 rounded-2xl transition-all border-2 border-transparent font-medium text-sm
                 ${activeTab === item.id 
                   ? 'bg-macaw-light/20 text-macaw border-macaw-light/50' 
                   : 'text-slate-500 hover:bg-slate-100'}
@@ -134,7 +134,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="p-4 border-t-2 border-slate-100 mb-safe">
             <button 
                 onClick={onLogout}
-                className={`mt-2 w-full flex items-center gap-2 justify-center text-slate-400 hover:text-cardinal text-sm font-bold uppercase tracking-wider py-2 transition-all ${!isOpen && 'md:justify-center'}`}
+                className={`mt-2 w-full flex items-center gap-2 justify-center text-slate-400 hover:text-cardinal text-sm font-medium py-2 transition-all ${!isOpen && 'md:justify-center'}`}
                 title="Keluar"
             >
                 <LogOut size={20} /> 

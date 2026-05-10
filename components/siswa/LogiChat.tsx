@@ -95,10 +95,10 @@ export const LogiChat: React.FC = () => {
               <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 border-2 ${isBot ? 'bg-feather text-white border-feather-dark shadow-feather-light' : 'bg-white text-slate-400 border-slate-200'}`}>
                 {isBot ? <Bot size={20} /> : <User size={20} />}
               </div>
-              <div className={`max-w-[85%] p-4 rounded-2xl text-sm leading-relaxed shadow-sm border-b-4 ${
+              <div className={`max-w-[85%] p-4 rounded-2xl text-sm leading-relaxed shadow-sm ${
                 isBot 
-                  ? 'bg-white text-slate-700 rounded-tl-none border-2 border-slate-200 border-b-slate-300' 
-                  : 'bg-macaw text-white rounded-tr-none border-2 border-macaw border-b-macaw-dark'
+                  ? 'bg-white text-slate-700 rounded-tl-none border border-slate-200' 
+                  : 'bg-macaw text-white rounded-tr-none border border-macaw'
               }`}>
                 <SimpleMarkdown text={msg.text} />
               </div>
@@ -127,7 +127,7 @@ export const LogiChat: React.FC = () => {
                       <button 
                         key={idx}
                         onClick={() => sendMessage(chip)}
-                        className="whitespace-nowrap px-4 py-2 bg-white border-2 border-slate-200 border-b-4 rounded-xl text-slate-600 text-xs font-bold hover:border-macaw hover:text-macaw active:border-b-2 active:translate-y-[2px] transition-all"
+                        className="whitespace-nowrap px-4 py-2 bg-white border border-slate-200 rounded-xl text-slate-600 text-xs font-bold hover:border-macaw hover:text-macaw shadow-sm hover:shadow active:-translate-y-0.5 transition-all"
                       >
                           {chip}
                       </button>

@@ -164,20 +164,20 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ userData: in
   const levelStats = getLevelProgress(localUserData.exp);
 
   return (
-    <div className="max-w-5xl mx-auto p-4 md:p-6 pb-24 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="max-w-6xl mx-auto pb-24 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       {/* Teacher Status Banner */}
       {activeTeacherId && (
-          <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 flex justify-between items-center">
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 flex justify-between items-center shadow-sm">
              <div>
-                 <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider block mb-1">Ruang Kelas Aktif</span>
-                 <p className="font-bold text-indigo-900 text-sm md:text-base">Materi & Soal dikelola oleh: <span className="font-black text-indigo-600">{activeTeacherName || 'Guru'}</span></p>
+                 <span className="text-xs font-bold text-macaw uppercase tracking-wider block mb-1">Ruang Kelas Aktif</span>
+                 <p className="font-medium text-slate-700 text-sm md:text-base">Materi & Soal dikelola oleh: <span className="font-bold text-macaw-dark">{activeTeacherName || 'Guru'}</span></p>
              </div>
              <button
                  onClick={() => {
                      setActiveTeacherId(null);
                      window.location.reload(); 
                  }}
-                 className="px-4 py-2 bg-white text-indigo-600 text-sm font-bold border-2 border-indigo-200 rounded-xl hover:bg-indigo-100 transition-colors"
+                 className="px-4 py-2 bg-white text-slate-600 text-sm font-bold border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors"
              >
                  Ganti Guru
              </button>
@@ -233,7 +233,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ userData: in
                     <Map size={20} className="text-slate-400"/>
                     Perjalanan Belajar
                 </h3>
-                <div onClick={() => onNavigate('learn')} className="bg-white border-2 border-slate-200 rounded-3xl p-6 cursor-pointer hover:border-feather hover:shadow-lg hover:-translate-y-1 transition-all group flex items-center justify-between relative overflow-hidden">
+                <div onClick={() => onNavigate('learn')} className="bg-white border border-slate-200 rounded-2xl p-6 cursor-pointer hover:border-feather hover:shadow-md hover:-translate-y-0.5 transition-all group flex items-center justify-between relative overflow-hidden">
                     <div className="absolute right-0 top-0 bottom-0 w-2 bg-feather"></div>
                     <div className="flex items-center gap-5">
                         <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-feather/30 ${activeUnit.color} group-hover:scale-110 transition-transform duration-300`}>
@@ -351,7 +351,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({ icon, label, color, onClick
     };
 
     return (
-        <button onClick={onClick} className="group flex flex-col items-center justify-center p-4 bg-white border-b-4 border-2 border-slate-200 rounded-2xl hover:border-slate-300 active:border-b-2 active:translate-y-[2px] transition-all">
+        <button onClick={onClick} className="group flex flex-col items-center justify-center p-4 bg-white border border-slate-200 rounded-2xl hover:border-slate-300 hover:shadow-sm active:-translate-y-0.5 transition-all">
             <div className={`p-4 rounded-2xl mb-3 transition-colors duration-300 border-2 ${colorClasses[color]}`}>
                 {icon}
             </div>

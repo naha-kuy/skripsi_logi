@@ -125,9 +125,8 @@ export const TeacherDashboard: React.FC<{ onNavigate: (tab: string) => void }> =
     };
 
     return (
-        <div className="p-6 max-w-7xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4">
-            {/* HERO SECTION */}
-            <div className="bg-white rounded-3xl p-8 border-2 border-slate-100 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
+        <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4">
+            <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-macaw-light/20 to-transparent rounded-bl-full pointer-events-none"></div>
 
                 <div className="relative shrink-0">

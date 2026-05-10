@@ -644,12 +644,12 @@ export const LessonView: React.FC<LessonViewProps> = ({ lesson, onComplete, onEx
                 <Button 
                     onClick={isChecked ? handleNext : handleCheck} 
                     disabled={!selectedOption} 
-                    className={`w-full md:w-auto min-w-[160px] shadow-[0_4px_0_0_rgba(0,0,0,0.2)] active:shadow-none active:translate-y-[4px] transition-all font-extrabold tracking-wider ${
+                    className={`w-full md:w-auto min-w-[160px] transition-all font-bold tracking-wider shadow-sm hover:shadow ${
                         !selectedOption 
-                        ? 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none' 
+                        ? 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none border border-transparent' 
                         : isChecked 
-                            ? (isCorrect ? 'bg-green-500 hover:bg-green-400 border-b-4 border-green-700 text-white' : 'bg-red-500 hover:bg-red-400 border-b-4 border-red-700 text-white')
-                            : 'bg-green-500 hover:bg-green-400 border-b-4 border-green-700 text-white'
+                            ? (isCorrect ? 'bg-green-500 hover:bg-green-600 border border-green-600 text-white' : 'bg-red-500 hover:bg-red-600 border border-red-600 text-white')
+                            : 'bg-green-500 hover:bg-green-600 border border-green-600 text-white'
                     }`} 
                     size="lg"
                 >
