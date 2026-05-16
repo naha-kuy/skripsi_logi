@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../services/supabase';
 import { useAppContext } from '../../lib/AppContext';
-import { Loader2, AlertCircle } from 'lucide-react';
+import { Loader2, AlertCircle, FileSpreadsheet } from 'lucide-react';
+import * as XLSX from 'xlsx';
+import { Button } from '../shared/Button';
 
 interface StudentAnswer {
     student_id: string;
@@ -157,10 +159,74 @@ export const StudentProgressSummary: React.FC = () => {
         return `${percentage}%`;
     };
 
+    const downloadExcel = () => {
+        if (students.length === 0) return;
+
+        const pretestIds = contextQuestions['pretest'] || [];
+        const posttestIds = contextQuestions['posttest'] || [];
+
+        const reportData = students.map((student, idx) => {
+            const row: any = {
+                "No": idx + 1,
+                "Username": student.username,
+                "Email": student.email || '-',
+                "Nilai Pre-test": getScore(pretestIds, student.id),
+                "Nilai Post-test": getScore(posttestIds, student.id),
+            };
+
+            // Tambahkan status per butir soal Pre-test
+            pretestIds.forEach((qId, i) => {
+                const key = `${student.id}_${qId}`;
+                const ans = latestAnswers.get(key);
+                row[`Pre-test Soal ${i + 1}`] = ans ? (ans.is_correct ? 'Benar' : 'Salah') : 'Belum';
+            });
+
+            // Tambahkan status per butir soal Post-test
+            posttestIds.forEach((qId, i) => {
+                const key = `${student.id}_${qId}`;
+                const ans = latestAnswers.get(key);
+                row[`Post-test Soal ${i + 1}`] = ans ? (ans.is_correct ? 'Benar' : 'Salah') : 'Belum';
+            });
+
+            return row;
+        });
+
+        const worksheet = XLSX.utils.json_to_sheet(reportData);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Ringkasan Progres");
+
+        // Auto-size columns
+        const wscols = [
+            { wch: 5 },  // No
+            { wch: 20 }, // Username
+            { wch: 25 }, // Email
+            { wch: 15 }, // Nilai Pre
+            { wch: 15 }, // Nilai Post
+        ];
+        
+        // Add column widths for questions
+        pretestIds.forEach(() => wscols.push({ wch: 15 }));
+        posttestIds.forEach(() => wscols.push({ wch: 15 }));
+        
+        worksheet['!cols'] = wscols;
+
+        XLSX.writeFile(workbook, `Laporan_Ringkasan_Siswa_${new Date().toISOString().slice(0, 10)}.xlsx`);
+        showToast("Laporan Excel berhasil diunduh", "success");
+    };
+
     return (
         <div className="space-y-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                <div className="flex justify-end mb-6">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+                    <Button 
+                        variant="primary" 
+                        onClick={downloadExcel}
+                        className="flex items-center gap-2"
+                    >
+                        <FileSpreadsheet size={20} />
+                        Download Laporan Ringkasan (Excel)
+                    </Button>
+
                     <div className="flex items-center gap-4 text-sm font-bold bg-slate-50 p-3 rounded-xl border-2 border-slate-100">
                         <div className="flex items-center gap-2"><div className="w-4 h-4 rounded-full bg-green-500"></div> Benar</div>
                         <div className="flex items-center gap-2"><div className="w-4 h-4 rounded-full bg-red-500"></div> Salah</div>
