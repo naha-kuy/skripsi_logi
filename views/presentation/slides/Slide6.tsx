@@ -1,48 +1,36 @@
 import React from 'react';
-import { Monitor, Gamepad2 } from 'lucide-react';
+import { Layout, Paintbrush, Shield, Route } from 'lucide-react';
+
+const cards = [
+  { icon: Layout, title: 'Arsitektur Platform', items: ['React + TypeScript', 'Supabase backend', 'Three.js 3D visual'], color: 'text-macaw', border: 'border-macaw/10', bg: 'bg-macaw/5' },
+  { icon: Paintbrush, title: 'Desain Gamifikasi', items: ['Sistem point & XP', 'Badge pencapaian', 'Leaderboard realtime'], color: 'text-feather-dark', border: 'border-feather/10', bg: 'bg-feather/5' },
+  { icon: Shield, title: 'Integrasi AI', items: ['Gemini API Google', 'Few-Shot prompting', 'Human-in-the-Loop'], color: 'text-bee-dark', border: 'border-bee/10', bg: 'bg-bee/5' },
+  { icon: Route, title: 'Mastery Learning', items: ['Progress individu', 'Materi bertahap'], color: 'text-cardinal', border: 'border-cardinal/10', bg: 'bg-cardinal/5' }
+];
 
 export const Slide6 = () => (
-  <div className="w-full max-w-5xl mx-auto flex flex-col gap-6">
-    <div className="text-center">
-      <span className="text-feather font-black text-base uppercase tracking-wider">Solusi Penelitian</span>
-      <h2 className="text-3xl md:text-5xl font-black text-slate-900 font-display mt-2">
-        Platform Pembelajaran "Logi"
-      </h2>
-    </div>
+  <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
+    <p className="text-xs font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Tahap ADDIE</p>
+    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">Design</h2>
+    <p className="text-sm md:text-base text-slate-500 mb-4">Perancangan arsitektur dan pengalaman pengguna</p>
 
-    <div className="flex flex-col lg:flex-row gap-8 items-center mt-4">
-      <div className="w-full lg:w-1/2 flex flex-col gap-4">
-        <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm">
-          <h3 className="font-display font-black text-xl text-slate-800 flex items-center gap-2">
-            <Monitor className="text-macaw" />
-            Web-Based Platform
-          </h3>
-          <p className="text-sm md:text-base text-slate-600 mt-2 leading-relaxed">
-            Logi merupakan aplikasi berbasis web responsif yang dirancang untuk pembelajaran geometri ruang 3D. Terintegrasi dengan basis data real-time Supabase.
-          </p>
-        </div>
-        
-        <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm">
-          <h3 className="font-display font-black text-xl text-slate-800 flex items-center gap-2">
-            <Gamepad2 className="text-feather" />
-            Gamifikasi PBL Terpadu
-          </h3>
-          <p className="text-sm md:text-base text-slate-600 mt-2 leading-relaxed">
-            Siswa belajar sembari bermain menggunakan mekanik game 3D interaktif yang dipadukan dengan reward sistem berupa Points, Badges, dan Leaderboard.
-          </p>
-        </div>
-      </div>
-
-      <div className="w-full lg:w-1/2 border-2 border-slate-200 rounded-2xl overflow-hidden aspect-video bg-slate-100 flex flex-col items-center justify-center text-slate-400 p-8 shadow-sm relative">
-        <Monitor className="w-16 h-16 text-slate-300 mb-3 animate-pulse" />
-        <div className="font-bold text-slate-700 text-base">Dashboard Utama Logi</div>
-        <p className="text-xs text-slate-500 text-center mt-2 max-w-sm">
-          [PLACEHOLDER: Tangkapan layar antarmuka dashboard utama Logi]
-        </p>
-        <div className="absolute bottom-2 right-2 bg-slate-800 text-white text-[10px] px-2 py-1 rounded font-mono">
-          screenshot_dashboard.png
-        </div>
-      </div>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full max-w-5xl">
+      {cards.map(c => {
+        const Icon = c.icon;
+        return (
+          <div key={c.title} className={`${c.bg} ${c.border} border-2 rounded-2xl p-4 md:p-5 text-left transition-all hover:-translate-y-0.5 hover:shadow-md`}>
+            <div className={`w-10 h-10 rounded-xl ${c.bg} border ${c.border} flex items-center justify-center mb-2`}><Icon size={20} className={c.color} /></div>
+            <h3 className={`font-extrabold text-sm md:text-base mb-2 ${c.color}`}>{c.title}</h3>
+            <ul className="space-y-1.5">
+              {c.items.map(item => (
+                <li key={item} className="flex items-start gap-1.5 text-sm md:text-base text-slate-700">
+                  <span className={`w-1.5 h-1.5 rounded-full ${c.color.replace('text-', 'bg-')} mt-1.5 shrink-0`} />{item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
     </div>
   </div>
 );

@@ -1,45 +1,60 @@
 import React from 'react';
+import { User, Bot, Database, GraduationCap, Edit3, Sparkles, CheckCircle } from 'lucide-react';
+
+const steps = [
+  { number: '1', icon: User, title: 'Guru', desc: 'Menentukan KD & topik konteks soal', color: 'text-macaw', bg: 'bg-macaw/5', border: 'border-macaw/10' },
+  { number: '2', icon: Bot, title: 'AI Generatif', desc: 'Membuat pertanyaan dengan few-shot prompting dari hardcoded', color: 'text-feather-dark', bg: 'bg-feather/5', border: 'border-feather/10' },
+  { number: '3', icon: Edit3, title: 'Kurasi Guru', desc: 'Review, edit manual jika perlu, lalu setujui', color: 'text-bee-dark', bg: 'bg-bee/5', border: 'border-bee/10' },
+  { number: '4', icon: Database, title: 'Database', desc: 'Soal tersimpan & siap digunakan', color: 'text-fox', bg: 'bg-fox/5', border: 'border-fox/10' },
+  { number: '5', icon: GraduationCap, title: 'Siswa', desc: 'Mengerjakan soal di platform Logi', color: 'text-cardinal', bg: 'bg-cardinal/5', border: 'border-cardinal/10' },
+];
 
 export const Slide9 = () => (
-  <div className="w-full max-w-5xl mx-auto flex flex-col gap-6">
-    <div className="text-center">
-      <span className="text-feather font-black text-base uppercase tracking-wider">Prosedur Riset R&D</span>
-      <h2 className="text-3xl md:text-5xl font-black text-slate-900 font-display mt-2">
-        Model Pengembangan ADDIE
-      </h2>
-    </div>
+  <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
+    <p className="text-xs font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Inovasi</p>
+    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">AI Generatif & Human-in-the-Loop</h2>
+    <p className="text-sm md:text-base text-slate-500 mb-4 max-w-2xl">Alur pembuatan soal berbantuan AI dengan kurasi guru</p>
 
-    <div className="grid grid-cols-5 gap-2 md:gap-4 mt-6 bg-slate-50 p-6 rounded-3xl border-2 border-slate-200">
-      {[
-        { letter: 'A', name: 'Analysis', desc: 'Kebutuhan & CT', color: 'bg-cardinal text-white' },
-        { letter: 'D', name: 'Design', desc: 'Mockup UI & DB', color: 'bg-macaw text-white' },
-        { letter: 'D', name: 'Develop', desc: 'Pemrograman React', color: 'bg-bee text-slate-900' },
-        { letter: 'I', name: 'Implement', desc: 'Uji Coba Kelas VIII', color: 'bg-feather text-white' },
-        { letter: 'E', name: 'Evaluate', desc: 'Analisis Dampak CT', color: 'bg-slate-900 text-white' }
-      ].map((step, idx) => (
-        <div key={idx} className="flex flex-col items-center text-center">
-          <div className={`w-12 h-12 md:w-20 md:h-20 rounded-full flex items-center justify-center font-display font-black text-xl md:text-4xl ${step.color} shadow-md`}>
-            {step.letter}
-          </div>
-          <div className="font-display font-black text-xs md:text-lg mt-3 text-slate-800">{step.name}</div>
-          <div className="text-[10px] md:text-sm text-slate-500 mt-1 hidden sm:block">{step.desc}</div>
-        </div>
-      ))}
-    </div>
-
-    <div className="bg-white border-2 border-slate-200 rounded-3xl p-6 shadow-sm mt-4 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm md:text-base text-slate-600">
-      <div>
-        <h4 className="font-display font-bold text-slate-800 mb-2">📋 Tahap Desain & Pembuatan (Analysis-Design-Develop)</h4>
-        <p className="leading-relaxed text-sm md:text-base">
-          Menganalisis kesulitan visualisasi spasial 3D, merancang aset media gamifikasi, dan membuat aplikasi utuh menggunakan <strong>React, Tailwind, Supabase,</strong> dan <strong>Gemini AI API</strong>.
-        </p>
+    <div className="w-full max-w-5xl relative">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-2 w-full relative z-10">
+        {steps.map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <div key={s.number} className="flex md:flex-col items-center md:text-center gap-3 md:gap-2">
+              <div className={`${s.bg} ${s.border} border-2 rounded-2xl p-3 md:p-4 flex-1 md:w-full transition-all hover:shadow-lg hover:-translate-y-0.5`}>
+                <span className="text-xs font-black text-slate-400 mb-1 block">{String(i + 1).padStart(2, '0')}</span>
+                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl ${s.bg} border ${s.border} flex items-center justify-center mx-auto mb-1.5`}>
+                  <Icon size={18} className={s.color} />
+                </div>
+                <p className={`font-extrabold text-xs md:text-sm ${s.color} mb-0.5`}>{s.title}</p>
+                <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{s.desc}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
-      <div className="border-l border-slate-200 hidden md:block" />
-      <div>
-        <h4 className="font-display font-bold text-slate-800 mb-2">🚀 Tahap Penerapan & Penilaian (Implement-Evaluate)</h4>
-        <p className="leading-relaxed text-sm md:text-base">
-          Menguji kepraktisan platform Logi kepada siswa kelas VIII di kelas matematika, serta mengevaluasi validitas media serta efektivitas dampak berpikir komputasional.
-        </p>
+    </div>
+
+    <div className="w-full max-w-5xl mt-4 bg-white border-2 border-slate-200 rounded-2xl p-4 md:p-5">
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="flex items-start gap-2.5">
+          <div className="w-8 h-8 rounded-xl bg-feather/10 border border-feather/10 flex items-center justify-center shrink-0 mt-0.5">
+            <Sparkles size={16} className="text-feather-dark" />
+          </div>
+          <div className="text-left">
+            <p className="font-extrabold text-xs md:text-sm text-slate-800 mb-0.5">Few-Shot Prompting</p>
+            <p className="text-[11px] md:text-xs text-slate-600 leading-relaxed">Prompt hardcoded berisi skema jawaban dan 2&ndash;3 contoh soal bergradasi sebagai acuan AI.</p>
+          </div>
+        </div>
+        <div className="flex items-start gap-2.5">
+          <div className="w-8 h-8 rounded-xl bg-bee/10 border border-bee/10 flex items-center justify-center shrink-0 mt-0.5">
+            <CheckCircle size={16} className="text-bee-dark" />
+          </div>
+          <div className="text-left">
+            <p className="font-extrabold text-xs md:text-sm text-slate-800 mb-0.5">Kurasi &amp; Edit Manual</p>
+            <p className="text-[11px] md:text-xs text-slate-600 leading-relaxed">Guru meninjau, menyunting, dan menyetujui tiap soal sebelum ditayangkan ke siswa.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -76,7 +76,9 @@ const ToastDisplay = () => {
 export const AppContent: React.FC = () => {
   const { session, userData, isLoading, activeTeacherId, setActiveTeacherId, setSession, setUserData, setLoading } = useAppContext();
   const [activeTab, setActiveTab] = useState(() => {
-    return window.location.pathname.slice(1) || 'dashboard';
+    const path = window.location.pathname.slice(1);
+    if (path === 'presentation' || path.startsWith('presentation/')) return 'presentation';
+    return path || 'dashboard';
   });
   const [authView, setAuthView] = useState<'login' | 'register' | 'success'>('login');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -86,6 +88,9 @@ export const AppContent: React.FC = () => {
   useEffect(() => {
     const currentPath = window.location.pathname.slice(1);
     if (currentPath !== activeTab) {
+      // Don't override presentation sub-paths (e.g., /presentation/slide-3)
+      if (activeTab === 'presentation' && currentPath.startsWith('presentation/')) return;
+      if (activeTab === 'presentation') return;
       window.history.pushState({}, '', `/${activeTab}`);
     }
   }, [activeTab]);
@@ -94,7 +99,11 @@ export const AppContent: React.FC = () => {
   useEffect(() => {
     const handlePopState = () => {
       const path = window.location.pathname.slice(1);
-      setActiveTab(path || 'dashboard');
+      if (path === 'presentation' || path.startsWith('presentation/')) {
+        setActiveTab('presentation');
+      } else {
+        setActiveTab(path || 'dashboard');
+      }
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);

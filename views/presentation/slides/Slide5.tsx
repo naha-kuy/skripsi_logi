@@ -1,49 +1,37 @@
 import React from 'react';
+import { Target, Users, ClipboardList, BookOpen } from 'lucide-react';
+
+const cards = [
+  { icon: Users, title: 'Subjek Penelitian', items: ['28 siswa kelas VIII', 'MTsN 1 Kediri'], color: 'text-macaw', border: 'border-macaw/10', bg: 'bg-macaw/5' },
+  { icon: ClipboardList, title: 'Analisis Kebutuhan', items: ['Studi literatur CT'], color: 'text-feather-dark', border: 'border-feather/10', bg: 'bg-feather/5' },
+  { icon: BookOpen, title: 'Kajian Pustaka', items: ['Computational Thinking', 'Gamifikasi PBL', 'AI Generatif'], color: 'text-bee-dark', border: 'border-bee/10', bg: 'bg-bee/5' },
+  { icon: Target, title: 'Rumusan Masalah', items: ['Validitas produk?', 'Praktikalitas produk?', 'Efektivitas produk?'], color: 'text-cardinal', border: 'border-cardinal/10', bg: 'bg-cardinal/5' }
+];
 
 export const Slide5 = () => (
-  <div className="w-full max-w-5xl mx-auto">
-    <h2 className="text-3xl md:text-5xl font-black text-slate-900 font-display text-center mb-8">
-      Fokus Penelitian & Tujuan
-    </h2>
-    
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div className="border-2 border-slate-200 rounded-3xl p-8 bg-white shadow-sm flex flex-col gap-5">
-        <div className="flex items-center gap-3 pb-3 border-b-2 border-slate-100 text-cardinal">
-          <div className="w-3.5 h-3.5 rounded-full bg-cardinal" />
-          <span className="font-display font-black text-base uppercase tracking-wider text-slate-800">Rumusan Masalah</span>
-        </div>
-        <ul className="space-y-4 flex-1">
-          {[
-            'Bagaimana validitas platform pembelajaran matematika "Logi" terintegrasi AI Generatif?',
-            'Bagaimana praktikalitas platform pembelajaran "Logi" menurut respon guru dan siswa?',
-            'Bagaimana efektivitas platform "Logi" dalam meningkatkan berpikir komputasional (CT) siswa?'
-          ].map((q, idx) => (
-            <li key={idx} className="flex gap-3 items-start text-sm md:text-base text-slate-700">
-              <span className="font-display font-black text-cardinal text-lg">{idx + 1}.</span>
-              <span className="leading-relaxed">{q}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+  <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
+    <p className="text-xs font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Tahap ADDIE</p>
+    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">Analisis</h2>
+    <p className="text-sm md:text-base text-slate-500 mb-4">Identifikasi masalah dan kebutuhan pembelajaran</p>
 
-      <div className="border-2 border-slate-200 rounded-3xl p-8 bg-white shadow-sm flex flex-col gap-5">
-        <div className="flex items-center gap-3 pb-3 border-b-2 border-slate-100 text-feather">
-          <div className="w-3.5 h-3.5 rounded-full bg-feather" />
-          <span className="font-display font-black text-base uppercase tracking-wider text-slate-800">Tujuan Penelitian</span>
-        </div>
-        <ul className="space-y-4 flex-1">
-          {[
-            'Menghasilkan media pembelajaran interaktif "Logi" yang Valid untuk materi geometri ruang.',
-            'Mewujudkan platform yang Praktis dan aplikatif digunakan dalam kegiatan belajar mengajar.',
-            'Membuktikan peningkatan keterampilan berpikir komputasional secara Efektif melalui data empiris.'
-          ].map((aim, idx) => (
-            <li key={idx} className="flex gap-3 items-start text-sm md:text-base text-slate-700">
-              <span className="font-display font-black text-feather text-lg">✓</span>
-              <span className="leading-relaxed">{aim}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full max-w-5xl flex-1 items-stretch">
+      {cards.map(c => {
+        const Icon = c.icon;
+        return (
+          <div key={c.title} className={`${c.bg} ${c.border} border-2 rounded-2xl p-4 md:p-5 text-left transition-all hover:-translate-y-0.5 hover:shadow-md flex flex-col`}>
+            <div className={`w-10 h-10 rounded-xl ${c.bg} border ${c.border} flex items-center justify-center mb-2`}><Icon size={20} className={c.color} /></div>
+            <h3 className={`font-extrabold text-sm md:text-base mb-2 ${c.color}`}>{c.title}</h3>
+            <ul className="space-y-1.5 flex-1">
+              {c.items.map(item => (
+                <li key={item} className="flex items-start gap-1.5 text-sm md:text-base text-slate-700">
+                  <span className={`w-1.5 h-1.5 rounded-full ${c.color.replace('text-', 'bg-')} mt-1.5 shrink-0`} />{item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
     </div>
+
   </div>
 );

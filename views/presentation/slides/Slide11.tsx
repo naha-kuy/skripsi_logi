@@ -1,62 +1,39 @@
 import React from 'react';
-import { CountUp } from '../components/CountUp';
+import { ClipboardCheck, ThumbsUp, TrendingUp } from 'lucide-react';
 
-export const Slide11: React.FC<{ isActive: boolean }> = ({ isActive }) => (
-  <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row gap-8 items-center">
-    <div className="w-full md:w-2/5 text-center">
-      <div className="bg-macaw/5 border-2 border-macaw/20 rounded-3xl p-8 flex flex-col items-center shadow-sm">
-        <span className="text-sm text-slate-400 font-bold uppercase tracking-wider">Skor Kepraktisan Pengguna</span>
-        <div className="text-7xl md:text-8xl font-display font-black text-macaw mt-2 leading-none">
-          <CountUp value={97.7} trigger={isActive} suffix="%" />
-        </div>
-        <div className="mt-4 px-6 py-2 bg-macaw text-white rounded-full font-display font-black text-sm uppercase tracking-wider">
-          SANGAT PRAKTIS
-        </div>
-        <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden mt-8 border border-slate-200">
-          <div 
-            className="bg-macaw h-full rounded-full transition-all duration-1000 ease-out" 
-            style={{ width: isActive ? '97.7%' : '0%' }}
-          />
-        </div>
-      </div>
-    </div>
+const items = [
+  { icon: ClipboardCheck, title: 'Validitas', value: '92,0%', label: 'Sangat Valid', color: 'text-feather-dark', barColor: 'bg-feather', barW: '92%' },
+  { icon: ThumbsUp, title: 'Praktikalitas', value: '97,7%', label: 'Sangat Praktis', color: 'text-macaw', barColor: 'bg-macaw', barW: '98%' },
+  { icon: TrendingUp, title: 'Efektivitas', value: '0,75', label: 'N-Gain Tinggi', color: 'text-bee-dark', barColor: 'bg-bee', barW: '75%' },
+];
 
-    <div className="w-full md:w-3/5 flex flex-col gap-5">
-      <h2 className="text-3xl md:text-4xl font-black text-slate-900 font-display">
-        Respon Praktikalitas Guru & Siswa
-      </h2>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
-        <div className="border-2 border-slate-200 rounded-2xl p-5 bg-white shadow-sm">
-          <div className="flex justify-between items-center mb-3">
-            <span className="font-display font-black text-base text-slate-800">Respon Siswa</span>
-            <span className="font-display font-black text-lg text-macaw">96,8%</span>
-          </div>
-          <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden mb-4">
-            <div className="bg-macaw h-full rounded-full" style={{ width: '96.8%' }} />
-          </div>
-          <ul className="text-xs md:text-sm text-slate-600 space-y-2">
-            <li>✓ Navigasi game sangat mudah dipahami.</li>
-            <li>✓ Penjelasan materi interaktif menarik minat.</li>
-            <li>✓ LogiChat AI sangat menuntun logika berpikir.</li>
-          </ul>
-        </div>
+export const Slide11 = () => (
+  <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
+    <p className="text-xs font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Tahap ADDIE</p>
+    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">Evaluasi</h2>
+    <p className="text-sm md:text-base text-slate-500 mb-4">Penilaian menyeluruh produk Logi</p>
 
-        <div className="border-2 border-slate-200 rounded-2xl p-5 bg-white shadow-sm">
-          <div className="flex justify-between items-center mb-3">
-            <span className="font-display font-black text-base text-slate-800">Respon Guru</span>
-            <span className="font-display font-black text-lg text-feather">98,5%</span>
+    <div className="grid sm:grid-cols-3 gap-3 md:gap-4 w-full max-w-4xl">
+      {items.map(item => {
+        const Icon = item.icon;
+        return (
+          <div key={item.title} className="bg-white border-2 border-slate-200 rounded-2xl p-4 md:p-5 text-left transition-all hover:-translate-y-0.5 hover:shadow-md">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                <Icon size={20} className={item.color} />
+              </div>
+              <div>
+                <p className="font-extrabold text-sm md:text-base text-slate-800">{item.title}</p>
+                <p className={`font-black text-lg md:text-xl ${item.color}`}>{item.value}</p>
+              </div>
+            </div>
+            <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div className={`h-full ${item.barColor} rounded-full transition-all duration-1000`} style={{ width: item.barW }} />
+            </div>
+            <p className="text-[11px] md:text-xs font-semibold text-slate-500 mt-1.5">{item.label}</p>
           </div>
-          <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden mb-4">
-            <div className="bg-feather h-full rounded-full" style={{ width: '98.5%' }} />
-          </div>
-          <ul className="text-xs md:text-sm text-slate-600 space-y-2">
-            <li>✓ Mempermudah monitoring capaian kuis kelas.</li>
-            <li>✓ Pengelolaan unit dan soal ajar sangat fleksibel.</li>
-            <li>✓ Data analitik siswa tersaji secara informatif.</li>
-          </ul>
-        </div>
-      </div>
+        );
+      })}
     </div>
   </div>
 );

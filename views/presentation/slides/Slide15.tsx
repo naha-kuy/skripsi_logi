@@ -1,65 +1,47 @@
 import React from 'react';
-import { User2 } from 'lucide-react';
+import { CheckCircle, Lightbulb, ArrowRight } from 'lucide-react';
+
+const conclusions = [
+  { icon: CheckCircle, label: 'Valid', value: '92,0% Sangat Valid', color: 'text-feather-dark', bg: 'bg-feather/5', border: 'border-feather/10' },
+  { icon: CheckCircle, label: 'Praktis', value: '97,7% Sangat Praktis', color: 'text-macaw', bg: 'bg-macaw/5', border: 'border-macaw/10' },
+  { icon: CheckCircle, label: 'Efektif', value: 'N-Gain 0,75 Tinggi', color: 'text-bee-dark', bg: 'bg-bee/5', border: 'border-bee/10' }
+];
+
+const suggestions = ['Perluasan materi matematika lainnya', 'Uji coba skala lebih luas', 'Pengembangan game kolaboratif siswa'];
 
 export const Slide15 = () => (
-  <div className="flex flex-col items-center justify-center text-center text-white px-4 md:px-8 w-full max-w-5xl h-full select-none">
-    <div className="w-32 h-32 mb-4 bg-white/10 backdrop-blur border-2 border-white/20 rounded-full flex items-center justify-center text-5xl shadow-xl overflow-hidden relative">
-      <img 
-        src="/images/presentation/logo_um.png" 
-        alt="Logo UM" 
-        onError={(e) => {
-          (e.target as HTMLImageElement).style.display = 'none';
-          const fallback = (e.target as HTMLImageElement).nextElementSibling as HTMLElement;
-          if (fallback) fallback.style.display = 'flex';
-        }}
-        className="w-full h-full object-contain p-2"
-      />
-      <div className="hidden absolute inset-0 items-center justify-center text-6xl">
-        🎓
-      </div>
-    </div>
-    <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight max-w-5xl text-white font-display mb-4">
-      Terima Kasih
-    </h1>
-    <p className="text-sm md:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed mb-6 font-display italic">
-      "Meningkatkan Berpikir Komputasional Siswa melalui Platform Pembelajaran Berbasis Game Terintegrasi AI Generatif"
-    </p>
-    
-    <div className="h-1.5 w-32 bg-gradient-to-r from-feather to-feather-light rounded-full mb-6 mx-auto" />
+  <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
+    <p className="text-xs font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Penutup</p>
+    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">Kesimpulan & Saran</h2>
+    <p className="text-sm md:text-base text-slate-500 mb-4">Ringkasan hasil penelitian</p>
 
-    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 w-full max-w-4xl mx-auto shadow-2xl flex flex-col md:flex-row gap-6 md:gap-8 items-center justify-center text-left">
-      <div className="shrink-0 flex flex-col items-center">
-        <div className="w-32 h-32 rounded-2xl bg-white/10 border-2 border-white/20 overflow-hidden flex items-center justify-center text-slate-300 relative shadow-md">
-          <img 
-            src="/images/presentation/foto_pribadi.png" 
-            alt="Foto Pribadi" 
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = 'none';
-            }}
-            className="w-full h-full object-cover"
-          />
+    <div className="grid md:grid-cols-2 gap-4 w-full max-w-5xl">
+      <div className="bg-white border-2 border-slate-200 rounded-2xl p-4 md:p-5 text-left">
+        <h3 className="font-extrabold text-base md:text-lg text-slate-800 mb-3 flex items-center gap-2">
+          <CheckCircle size={18} className="text-feather" /> Kesimpulan
+        </h3>
+        <div className="space-y-3">
+          {conclusions.map(c => (
+            <div key={c.label} className={`${c.bg} ${c.border} border rounded-xl p-4 md:p-5 flex items-center justify-between`}>
+              <span className="font-bold text-base md:text-lg text-slate-700">{c.label}</span>
+              <span className={`font-black text-sm md:text-base ${c.color}`}>{c.value}</span>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs md:text-sm">
-        <div>
-          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Nama Mahasiswa</p>
-          <p className="text-base font-extrabold text-white mt-0.5">Muhammad Nafis Hakim</p>
-          <p className="text-xs text-slate-300">NIM. 220311605217</p>
-        </div>
-        <div>
-          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Program Studi</p>
-          <p className="text-base font-bold text-white mt-0.5">S1 Pendidikan Matematika</p>
-          <p className="text-xs text-slate-300">Jurusan Matematika</p>
-        </div>
-        <div>
-          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Dosen Pembimbing</p>
-          <p className="text-base font-bold text-feather-light mt-0.5">Indriati Nurul Hidayah, S.Pd, M.Si</p>
-        </div>
-        <div>
-          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Tanggal Ujian Sidang</p>
-          <p className="text-base font-bold text-white mt-0.5">2 Juni 2026</p>
-        </div>
+      <div className="bg-white border-2 border-slate-200 rounded-2xl p-4 md:p-5 text-left">
+        <h3 className="font-extrabold text-base md:text-lg text-slate-800 mb-3 flex items-center gap-2">
+          <Lightbulb size={18} className="text-bee-dark" /> Saran
+        </h3>
+        <ul className="space-y-2">
+          {suggestions.map(s => (
+            <li key={s} className="flex items-start gap-2 text-sm md:text-base text-slate-700">
+              <ArrowRight size={16} className="text-feather mt-0.5 shrink-0" />
+              {s}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   </div>
