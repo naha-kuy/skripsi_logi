@@ -2,8 +2,8 @@ import React from 'react';
 
 export const Slide16 = () => (
   <div className="flex flex-col items-center justify-center text-center text-white px-2 md:px-4 w-full max-w-6xl mx-auto h-full select-none py-0">
-    <div className="animate-bounce-slow mb-6 md:mb-8">
-      <div className="w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 bg-white/10 backdrop-blur border-2 border-white/20 rounded-full flex items-center justify-center text-5xl md:text-6xl shadow-xl overflow-hidden relative">
+    <div className="animate-bounce-slow mb-4 md:mb-6">
+      <div className="w-24 md:w-32 h-24 md:h-32 bg-white/10 backdrop-blur border-2 border-white/20 rounded-full flex items-center justify-center text-4xl md:text-5xl shadow-xl overflow-hidden relative">
         <img 
           src="/images/presentation/logo_um.png" 
           alt="Logo UM" 
@@ -19,18 +19,18 @@ export const Slide16 = () => (
         </div>
       </div>
     </div>
-    <h1 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight leading-tight max-w-5xl text-white font-display mb-4 md:mb-6">
+    <h1 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight leading-tight max-w-5xl text-white font-display mb-3 md:mb-4">
       Terima Kasih
     </h1>
-    <p className="text-xs md:text-sm lg:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed mb-5 md:mb-7 font-display italic">
+    <p className="text-xs md:text-sm lg:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed mb-3 md:mb-5 font-display italic">
       "Meningkatkan Berpikir Komputasional Siswa melalui Platform Pembelajaran Berbasis Game Terintegrasi AI Generatif"
     </p>
     
-    <div className="h-1.5 w-28 md:w-36 bg-gradient-to-r from-feather to-feather-light rounded-full mb-6 md:mb-8 mx-auto" />
+    <div className="h-1 w-24 md:w-32 bg-gradient-to-r from-feather to-feather-light rounded-full mb-4 md:mb-6 mx-auto" />
 
-    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 md:p-6 w-full max-w-4xl mx-auto shadow-2xl flex flex-col md:flex-row gap-4 md:gap-6 items-center justify-center text-left">
+    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-3 md:p-5 w-full max-w-4xl mx-auto shadow-2xl flex flex-col md:flex-row gap-3 md:gap-5 items-center justify-center text-left">
       <div className="shrink-0 flex flex-col items-center">
-        <div className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-2xl bg-white/10 border-2 border-white/20 overflow-hidden flex items-center justify-center text-slate-300 relative shadow-md">
+        <div className="w-20 md:w-24 h-20 md:h-24 rounded-2xl bg-white/10 border-2 border-white/20 overflow-hidden flex items-center justify-center text-slate-300 relative shadow-md">
           <img 
             src="/images/presentation/foto_pribadi.png" 
             alt="Foto Pribadi" 

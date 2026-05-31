@@ -19,7 +19,7 @@ export const SlideImage: React.FC<SlideImageProps> = ({ imageName, alt, aspect, 
   }, [imageName]);
 
   return (
-    <div className={`relative overflow-hidden ${aspect ? `aspect-[${aspect}]` : ''} ${className || ''}`}>
+    <div className={`relative overflow-hidden rounded-2xl ${aspect ? `aspect-[${aspect}]` : ''} ${className || ''}`}>
       <img
         src={`/images/presentation/${imageName}`}
         alt={alt}
@@ -28,7 +28,7 @@ export const SlideImage: React.FC<SlideImageProps> = ({ imageName, alt, aspect, 
         className={`w-full h-full object-contain ${loaded ? 'block' : 'hidden'}`}
       />
       {(!loaded || failed) && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-dashed border-slate-300 rounded-2xl">
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-dashed border-slate-300">
           {children || (
             <div className="flex flex-col items-center gap-2 p-4">
               <Image size={32} className="text-slate-400 shrink-0" />

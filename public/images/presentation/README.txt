@@ -11,8 +11,12 @@ logo_um.png                - Logo Universitas Negeri Malang
 bagan_metode.png           - Bagan Alur Metode Penelitian ADDIE (885 x 433 px)
 
 --- Slide 7 (Development) ---
-screenshot_dashboard.png   - Tampilan Dashboard Platform Logi
-screenshot_game_3d.png     - Tampilan Game 3D (Maze Runner / Space Adventure)
+ss_dashboard.png            - Tampilan Dashboard Platform Logi
+ss_3d.png                   - Tampilan Game 3D (1365 x 767 px)
+
+--- Slide 8 (Mastery) ---
+ss_belajar.png              - Tampilan Belajar (1365 x 767 px)
+ss_peringkat.png            - Tampilan Peringkat (1365 x 767 px)
 
 --- Slide 10 (Sequence Diagram) ---
 sequence_diagram.png       - Sequence Diagram Interaksi Komponen (3002 x 2620 px)

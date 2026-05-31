@@ -19,7 +19,7 @@ export const CountUp: React.FC<{ value: number; duration?: number; decimals?: nu
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      const easedProgress = progress * (2 - progress); // easeOutQuad
+      const easedProgress = progress * (2 - progress);
       setCount(easedProgress * value);
       if (progress < 1) {
         window.requestAnimationFrame(step);
@@ -32,4 +32,3 @@ export const CountUp: React.FC<{ value: number; duration?: number; decimals?: nu
 
   return <span>{count.toFixed(decimals)}{suffix}</span>;
 };
-

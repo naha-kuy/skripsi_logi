@@ -136,11 +136,11 @@ export const Presentation: React.FC = () => {
       case 9: return <Slide9 />;
       case 10: return <SlideSeq />;
       case 11: return <Slide10 />;
-      case 12: return <Slide11 />;
+      case 12: return <Slide11 isActive={currentSlide === 12} />;
       case 13: return <Slide12 isActive={currentSlide === 13} />;
       case 14: return <Slide13 isActive={currentSlide === 14} />;
       case 15: return <Slide14 isActive={currentSlide === 15} />;
-      case 16: return <Slide15 />;
+      case 16: return <Slide15 isActive={currentSlide === 16} />;
       case 17: return <Slide16 />;
       default: return null;
     }
@@ -188,7 +188,7 @@ export const Presentation: React.FC = () => {
 
       {/* Header */}
       {!isCoverOrClosing && (
-      <header className="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 sticky top-0 z-30 transition-all bg-white/70 backdrop-blur-xl border-b border-white/10">
+      <header className="flex items-center justify-between px-4 md:px-6 py-3 sticky top-0 z-30 transition-all bg-white/70 backdrop-blur-xl border-b border-white/10">
         <div className="flex items-center gap-3">
           <button onClick={() => setIsSidebarOpen(true)}
             className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-500 transition-colors"
@@ -219,7 +219,7 @@ export const Presentation: React.FC = () => {
 
       {/* Slide Content */}
       <main className={`flex-1 select-none ${
-        isCoverOrClosing ? 'overflow-hidden p-0 md:p-1' : 'overflow-y-auto p-4 md:p-6 lg:p-8'
+        isCoverOrClosing ? 'overflow-hidden p-0 md:p-1' : 'overflow-y-auto px-4 md:px-6 py-2'
       }`}>
         {isCoverOrClosing ? (
           <div className="h-full flex flex-col">
