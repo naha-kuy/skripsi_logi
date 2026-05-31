@@ -36,6 +36,8 @@ const MazeWrapper = lazy(() =>
 const AdventureWrapper = lazy(() =>
   import('./views/student/GameWrappers').then(m => ({ default: m.AdventureWrapper }))
 );
+const Presentation = lazy(() => import('./views/presentation/Presentation'));
+
 
 // Fallback loader untuk Suspense
 const GameLoadingFallback = () => (
@@ -198,6 +200,20 @@ export const AppContent: React.FC = () => {
     setAuthView('login');
     setActiveTab('dashboard');
   };
+
+  // --- BYPASS AUTH & LOADING UNTUK PRESENTASI ---
+  if (activeTab === 'presentation') {
+    return (
+      <Suspense fallback={
+        <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 text-white gap-4">
+          <Loader2 className="animate-spin text-feather" size={48} />
+          <p className="font-bold text-lg tracking-wide">Memuat Presentasi Sidang...</p>
+        </div>
+      }>
+        <Presentation />
+      </Suspense>
+    );
+  }
 
   if (fatalError) {
     return (

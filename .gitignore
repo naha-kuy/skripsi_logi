@@ -1,4 +1,4 @@
-# Logs
+# --- LOGS ---
 logs
 *.log
 npm-debug.log*
@@ -7,25 +7,57 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Node modules
+# --- DEPENDENCIES ---
 node_modules
+.pnp
+.pnp.js
+
+# --- BUILD OUTPUT ---
 dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# --- ENVIRONMENT VARIABLES (sensitive: API keys, DB credentials) ---
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+
+# --- SENSITIVE FILES (passwords, credentials) ---
+Password akun.txt
+
+# --- EDITOR / IDE ---
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
-*.suo
-*.ntvs
-*.njsproj
-*.sln
-*.sw?
+*.swp
+*.swo
+*~
+.ntvs*
+.njsproj
+.sln
+.suo
 
-# Environment Variables
-.env
-.env.local
-.env.development
-.env.production
+# --- OS SPECIFIC ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- TYPE SCRIPT ---
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# --- BUILD / DEV SCRIPTS (not part of source) ---
+refactor.cjs
+
+# --- PROJECT SPECIFIC ---
+_archive
+diagram/
+test
+metadata.json
+
+# --- VERCEL (deployment config is already tracked via vercel.json) ---
+.vercel
