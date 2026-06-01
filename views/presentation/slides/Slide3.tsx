@@ -11,9 +11,8 @@ const columns = [
     points: [
       'Visual 2D statis buku teks',
       'Hambat abstraksi geometri',
-      'CT stagnasi tanpa praktik',
     ],
-    ref: 'Saralar & Ainsworth (2025); Ye et al. (2023)'
+    ref: ''
   },
   {
     icon: Gamepad2,
@@ -23,10 +22,10 @@ const columns = [
     color: 'text-bee-dark',
     points: [
       'Gamifikasi picu tebak jawaban',
-      'Kejar poin, bukan kompetensi',
-      'Mastery learning terabaikan',
+      'Terlalu fokus kejar poin',
+      'Mastery learning kurang optimal',
     ],
-    ref: 'Chen & Wang (2026)'
+    ref: ''
   },
   {
     icon: Sparkles,
@@ -36,10 +35,9 @@ const columns = [
     color: 'text-feather-dark',
     points: [
       'AI Generatif + HITL personal',
-      'Bantuan belajar instan adaptif',
-      'Kurasi guru cegah halusinasi',
+      'Kurasi guru memastikan kualitas soal',
     ],
-    ref: 'Atkinson (2025); Bastani et al. (2025)'
+    ref: ''
   }
 ];
 
