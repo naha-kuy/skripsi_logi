@@ -22,7 +22,7 @@ const IconBox: React.FC<{ children: React.ReactNode; color: string }> = ({ child
 
 export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) => (
   <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
-    <p className="text-xs font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Navigasi</p>
+    <p className="text-sm font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Navigasi</p>
     <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-4">Outline Presentasi</h2>
 
     {/* Top bento: 01 wide, 02 tall, 03 + 04 normal */}
@@ -39,7 +39,7 @@ export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
             <h3 className="font-extrabold text-lg md:text-xl text-slate-800">{items[0].title}</h3>
           </div>
           <div className="col-start-2 row-start-2">
-            <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{items[0].desc}</p>
+            <p className="text-sm md:text-base text-slate-500 leading-relaxed">{items[0].desc}</p>
           </div>
           <div className="row-span-2 flex items-center justify-center h-full">
             <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-cardinal/10 border border-cardinal/10 flex items-center justify-center group-hover:bg-cardinal/20 transition-colors">
@@ -61,7 +61,7 @@ export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
             </div>
           </div>
           <h3 className="font-extrabold text-sm md:text-base text-slate-800">{items[1].title}</h3>
-          <ul className="text-xs md:text-sm text-slate-500 leading-snug space-y-0 list-disc list-inside">
+          <ul className="text-sm md:text-base text-slate-500 leading-snug space-y-0 list-disc list-inside">
             <li>Analysis</li>
             <li>Design</li>
             <li>Development</li>
@@ -69,7 +69,7 @@ export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
             <li>Evaluation</li>
           </ul>
         </div>
-        <div className="flex items-center gap-1.5 text-xs font-bold text-macaw mt-1">
+        <div className="flex items-center gap-1.5 text-sm font-bold text-macaw mt-1">
           <span>5 tahap</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </div>
@@ -85,7 +85,7 @@ export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
             <IconBox color="text-feather-dark"><Layout size={22} className="text-feather-dark" /></IconBox>
           </div>
           <h3 className="font-extrabold text-sm md:text-base text-slate-800">{items[2].title}</h3>
-          <p className="text-xs md:text-sm text-slate-500">{items[2].desc}</p>
+          <p className="text-sm md:text-base text-slate-500">{items[2].desc}</p>
         </div>
       </button>
 
@@ -99,7 +99,7 @@ export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
             <IconBox color="text-bee-dark"><Bot size={22} className="text-bee-dark" /></IconBox>
           </div>
           <h3 className="font-extrabold text-sm md:text-base text-slate-800">{items[3].title}</h3>
-          <p className="text-xs md:text-sm text-slate-500">{items[3].desc}</p>
+          <p className="text-sm md:text-base text-slate-500">{items[3].desc}</p>
         </div>
       </button>
     </div>
@@ -118,7 +118,7 @@ export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
             <h3 className="font-extrabold text-sm md:text-base text-slate-800">{items[4].title}</h3>
           </div>
           <div className="col-start-2 row-start-2">
-            <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{items[4].desc}</p>
+            <p className="text-sm md:text-base text-slate-500 leading-relaxed">{items[4].desc}</p>
           </div>
           <div className="row-span-2 flex items-center justify-center h-full">
             <div className="w-9 h-9 md:w-10 md:h-10 rounded-2xl bg-fox/10 border border-fox/10 flex items-center justify-center group-hover:bg-fox/20 transition-colors">
@@ -140,7 +140,7 @@ export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
             <h3 className="font-extrabold text-sm md:text-base text-slate-800">{items[5].title}</h3>
           </div>
           <div className="col-start-2 row-start-2">
-            <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{items[5].desc}</p>
+            <p className="text-sm md:text-base text-slate-500 leading-relaxed">{items[5].desc}</p>
           </div>
           <div className="row-span-2 flex items-center justify-center h-full">
             <div className="w-9 h-9 md:w-10 md:h-10 rounded-2xl bg-feather/10 border border-feather/10 flex items-center justify-center group-hover:bg-feather/20 transition-colors">

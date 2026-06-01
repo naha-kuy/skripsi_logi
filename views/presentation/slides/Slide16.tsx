@@ -40,23 +40,23 @@ export const Slide16 = () => (
         </div>
       </div>
 
-      <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 text-xs md:text-sm">
+      <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 text-sm md:text-base">
         <div>
-          <p className="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-wider">Nama Mahasiswa</p>
+          <p className="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wider">Nama Mahasiswa</p>
           <p className="text-sm md:text-base lg:text-lg font-extrabold text-white mt-0.5">Muhammad Nafis Hakim</p>
-          <p className="text-xs text-slate-300">NIM. 220311605217</p>
+          <p className="text-sm text-slate-300">NIM. 220311605217</p>
         </div>
         <div>
-          <p className="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-wider">Program Studi</p>
+          <p className="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wider">Program Studi</p>
           <p className="text-sm md:text-base lg:text-lg font-bold text-white mt-0.5">S1 Pendidikan Matematika</p>
-          <p className="text-xs text-slate-300">Jurusan Matematika</p>
+          <p className="text-sm text-slate-300">Jurusan Matematika</p>
         </div>
         <div>
-          <p className="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-wider">Dosen Pembimbing</p>
+          <p className="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wider">Dosen Pembimbing</p>
           <p className="text-sm md:text-base lg:text-lg font-bold text-feather-light mt-0.5">Indriati Nurul Hidayah, S.Pd, M.Si</p>
         </div>
         <div>
-          <p className="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-wider">Tanggal Ujian Sidang</p>
+          <p className="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wider">Tanggal Ujian Sidang</p>
           <p className="text-sm md:text-base lg:text-lg font-bold text-white mt-0.5">2 Juni 2026</p>
         </div>
       </div>

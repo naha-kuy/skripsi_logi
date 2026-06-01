@@ -11,7 +11,7 @@ const items = [
 
 export const Slide11: React.FC<{ isActive: boolean }> = ({ isActive }) => (
   <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
-    <p className="text-xs font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Tahap ADDIE</p>
+    <p className="text-sm font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Tahap ADDIE</p>
     <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">Evaluasi</h2>
     <p className="text-sm md:text-base text-slate-500 mb-2.5">Penilaian menyeluruh produk Logi</p>
 
@@ -26,13 +26,13 @@ export const Slide11: React.FC<{ isActive: boolean }> = ({ isActive }) => (
               </div>
               <div>
                 <p className="font-extrabold text-sm md:text-base text-slate-800">{item.title}</p>
-                <p className={`font-black text-base md:text-lg ${item.color}`}>
+                <p className={`font-black text-lg md:text-xl ${item.color}`}>
                   <CountUp value={item.numValue} trigger={isActive} decimals={item.numValue < 1 ? 2 : 1} suffix={item.suffix} />
                 </p>
               </div>
             </div>
             <BarAnimated isActive={isActive} color={item.barColor} width={item.barW} />
-            <p className="text-[10px] md:text-xs font-semibold text-slate-500 mt-1">{item.label}</p>
+            <p className="text-xs md:text-sm font-semibold text-slate-500 mt-1">{item.label}</p>
           </div>
         );
       })}

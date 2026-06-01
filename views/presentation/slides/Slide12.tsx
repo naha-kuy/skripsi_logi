@@ -11,17 +11,17 @@ const aspects = [
 
 export const Slide12: React.FC<{ isActive: boolean }> = ({ isActive }) => (
   <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
-    <p className="text-xs font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Hasil Penelitian</p>
+    <p className="text-sm font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Hasil Penelitian</p>
     <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">Validitas Ahli</h2>
     <p className="text-sm md:text-base text-slate-500 mb-2.5">Penilaian tiga validator ahli</p>
 
     <div className="flex flex-col lg:flex-row items-center gap-3 w-full max-w-5xl">
       <div className="bg-feather/5 border-2 border-feather/10 rounded-2xl p-4 md:p-5 text-center w-full lg:w-56 flex flex-col items-center">
-        <p className="text-[10px] md:text-xs font-bold text-feather-dark uppercase tracking-wider mb-1">Rata-rata</p>
+        <p className="text-xs md:text-sm font-bold text-feather-dark uppercase tracking-wider mb-1">Rata-rata</p>
         <p className="text-4xl md:text-5xl font-black text-feather-dark font-display">
           <CountUp value={92.0} trigger={isActive} decimals={1} suffix="%" />
         </p>
-        <div className="flex items-center gap-1 mt-2 bg-feather text-white text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full">
+        <div className="flex items-center gap-1 mt-2 bg-feather text-white text-xs md:text-sm font-black uppercase tracking-wider px-3 py-1 rounded-full">
           <CheckCircle size={14} /> Sangat Valid
         </div>
         <BarAnimated isActive={isActive} color="bg-feather" width="92%" trackBg="bg-white" className="mt-2" />

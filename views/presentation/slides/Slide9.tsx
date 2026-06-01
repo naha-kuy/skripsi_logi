@@ -11,7 +11,7 @@ const steps = [
 
 export const Slide9 = () => (
   <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
-    <p className="text-xs font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Inovasi</p>
+    <p className="text-sm font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Inovasi</p>
     <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">AI Generatif & Human-in-the-Loop</h2>
     <p className="text-sm md:text-base text-slate-500 mb-2.5 max-w-2xl">Alur pembuatan soal berbantuan AI dengan kurasi guru</p>
 
@@ -22,12 +22,12 @@ export const Slide9 = () => (
           return (
             <div key={s.number} className="flex md:flex-col items-center md:text-center gap-3 md:gap-2">
               <div className={`${s.bg} ${s.border} border-2 rounded-2xl p-2.5 md:p-3.5 flex-1 md:w-full transition-all hover:shadow-lg hover:-translate-y-0.5`}>
-                <span className="text-[10px] font-black text-slate-400 mb-0.5 block">{String(i + 1).padStart(2, '0')}</span>
+                <span className="text-xs md:text-sm font-black text-slate-400 mb-0.5 block">{String(i + 1).padStart(2, '0')}</span>
                 <div className={`w-9 h-9 md:w-11 md:h-11 rounded-xl ${s.bg} border ${s.border} flex items-center justify-center mx-auto mb-1`}>
                   <Icon size={16} className={s.color} />
                 </div>
-                <p className={`font-extrabold text-[10px] md:text-xs ${s.color} mb-0.5`}>{s.title}</p>
-                <p className="text-[10px] md:text-xs text-slate-500 leading-relaxed">{s.desc}</p>
+                <p className={`font-extrabold text-xs md:text-sm ${s.color} mb-0.5`}>{s.title}</p>
+                <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{s.desc}</p>
               </div>
             </div>
           );
@@ -42,8 +42,8 @@ export const Slide9 = () => (
             <Sparkles size={14} className="text-feather-dark" />
           </div>
           <div className="text-left">
-            <p className="font-extrabold text-[11px] md:text-xs text-slate-800 mb-0.5">Few-Shot Prompting</p>
-            <p className="text-[10px] md:text-xs text-slate-600 leading-relaxed">Prompt hardcoded berisi skema jawaban dan 2&ndash;3 contoh soal bergradasi sebagai acuan AI.</p>
+            <p className="font-extrabold text-xs md:text-sm text-slate-800 mb-0.5">Few-Shot Prompting</p>
+            <p className="text-xs md:text-sm text-slate-600 leading-relaxed">Prompt hardcoded berisi skema jawaban dan 2&ndash;3 contoh soal bergradasi sebagai acuan AI.</p>
           </div>
         </div>
         <div className="flex items-start gap-2">
@@ -51,8 +51,8 @@ export const Slide9 = () => (
             <CheckCircle size={14} className="text-bee-dark" />
           </div>
           <div className="text-left">
-            <p className="font-extrabold text-[11px] md:text-xs text-slate-800 mb-0.5">Kurasi &amp; Edit Manual</p>
-            <p className="text-[10px] md:text-xs text-slate-600 leading-relaxed">Guru meninjau, menyunting, dan menyetujui tiap soal sebelum ditayangkan ke siswa.</p>
+            <p className="font-extrabold text-xs md:text-sm text-slate-800 mb-0.5">Kurasi &amp; Edit Manual</p>
+            <p className="text-xs md:text-sm text-slate-600 leading-relaxed">Guru meninjau, menyunting, dan menyetujui tiap soal sebelum ditayangkan ke siswa.</p>
           </div>
         </div>
       </div>

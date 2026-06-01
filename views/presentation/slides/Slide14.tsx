@@ -10,7 +10,7 @@ export const Slide14: React.FC<{ isActive: boolean }> = ({ isActive }) => {
 
   return (
   <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
-    <p className="text-xs font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Hasil Penelitian</p>
+    <p className="text-sm font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Hasil Penelitian</p>
     <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">Efektivitas</h2>
     <p className="text-sm md:text-base text-slate-500 mb-2.5">Peningkatan skor kuis siswa</p>
 
@@ -18,8 +18,8 @@ export const Slide14: React.FC<{ isActive: boolean }> = ({ isActive }) => {
       <SlideImage
         imageName="chart_persebaran_nilai.png"
         alt="Chart Persebaran Nilai Siswa"
-        aspect="2/1"
-        className="w-full max-h-36"
+        aspect="1982/652"
+        className="w-full"
       >
         <div className="flex flex-col items-center gap-2">
           <p className="text-xs md:text-sm font-bold text-slate-400">Chart Persebaran Nilai Siswa</p>
@@ -45,7 +45,7 @@ export const Slide14: React.FC<{ isActive: boolean }> = ({ isActive }) => {
               <span className="w-2.5 h-2.5 rounded-sm bg-cardinal" />
               <span className="font-extrabold text-xs md:text-sm text-slate-600">Pretest</span>
             </div>
-            <p className="font-black text-sm md:text-lg text-cardinal">
+            <p className="font-black text-base md:text-lg text-cardinal">
               <CountUp value={39.3} trigger={isActive} decimals={1} suffix="%" />
             </p>
           </div>
@@ -54,7 +54,7 @@ export const Slide14: React.FC<{ isActive: boolean }> = ({ isActive }) => {
               <span className="w-2.5 h-2.5 rounded-sm bg-feather" />
               <span className="font-extrabold text-xs md:text-sm text-slate-600">Posttest</span>
             </div>
-            <p className="font-black text-sm md:text-lg text-feather-dark">
+            <p className="font-black text-base md:text-lg text-feather-dark">
               <CountUp value={84.6} trigger={isActive} decimals={1} suffix="%" />
             </p>
           </div>
@@ -65,7 +65,7 @@ export const Slide14: React.FC<{ isActive: boolean }> = ({ isActive }) => {
         <div className="w-10 h-10 rounded-2xl bg-bee flex items-center justify-center mb-2 shadow-lg shadow-bee/30">
           <Award size={24} className="text-white" />
         </div>
-        <p className="text-[10px] md:text-xs font-bold text-bee-dark uppercase tracking-widest mb-1">Skor N-Gain</p>
+        <p className="text-xs md:text-sm font-bold text-bee-dark uppercase tracking-widest mb-1">Skor N-Gain</p>
         <p className="text-4xl md:text-5xl font-black text-bee-dark font-display">
           <CountUp value={0.75} trigger={isActive} decimals={2} />
         </p>
@@ -73,7 +73,7 @@ export const Slide14: React.FC<{ isActive: boolean }> = ({ isActive }) => {
           <Target size={14} /> Efektivitas Tinggi
         </div>
         <BarAnimated isActive={isActive} color="bg-gradient-to-r from-bee to-bee-dark" width="75%" trackBg="bg-white/60" className="mt-2" />
-        <p className="text-[10px] md:text-xs font-semibold text-slate-500 mt-1.5">Kategori tinggi menurut Hake (1999)</p>
+        <p className="text-xs md:text-sm font-semibold text-slate-500 mt-1.5">Kategori tinggi menurut Hake (1999)</p>
       </div>
     </div>
   </div>

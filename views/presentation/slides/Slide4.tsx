@@ -12,7 +12,7 @@ const stages = [
 
 export const Slide4: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) => (
   <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
-    <p className="text-xs font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Metode</p>
+    <p className="text-sm font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Metode</p>
     <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">Metode Penelitian</h2>
     <p className="text-sm md:text-base text-slate-500 mb-2">Research & Development dengan model ADDIE</p>
 
@@ -24,7 +24,7 @@ export const Slide4: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
         className="w-full"
       >
         <div className="flex flex-col items-center gap-2">
-          <p className="text-sm font-bold text-slate-400">Bagan Metode Penelitian ADDIE</p>
+          <p className="text-xs md:text-sm font-bold text-slate-400">Bagan Metode Penelitian ADDIE</p>
         </div>
       </SlideImage>
     </div>
@@ -42,9 +42,9 @@ export const Slide4: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
                 <div className={`w-10 h-10 rounded-2xl flex items-center justify-center mb-0.5 border-2 ${colors[i]} transition-colors group-hover:shadow-lg`}>
                   <Icon size={18} />
                 </div>
-                <span className={`text-[10px] font-black ${colors[i].split(' ')[0]}`}>{String(i + 1).padStart(2, '0')}</span>
-                <p className="font-extrabold text-[10px] md:text-xs text-slate-800 mt-0.5">{s.label}</p>
-                <p className="text-[9px] md:text-[10px] text-slate-500 leading-tight">{s.desc}</p>
+                <span className={`text-xs md:text-sm font-black ${colors[i].split(' ')[0]}`}>{String(i + 1).padStart(2, '0')}</span>
+                <p className="font-extrabold text-xs md:text-sm text-slate-800 mt-0.5">{s.label}</p>
+                <p className="text-xs md:text-sm text-slate-500 leading-tight">{s.desc}</p>
               </button>
             );
           })}
@@ -64,7 +64,7 @@ export const Slide4: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
               </div>
               <div className="flex-1 text-left">
                 <p className="font-bold text-sm text-slate-800">{s.label}</p>
-                <p className="text-xs text-slate-500">{s.desc}</p>
+                <p className="text-sm text-slate-500">{s.desc}</p>
               </div>
             </button>
           );
