@@ -14,7 +14,7 @@ export const Slide15: React.FC<{ isActive: boolean }> = ({ isActive }) => (
   <div className="flex flex-col items-center px-4 md:px-6 pt-2 pb-3 select-none w-full">
     <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 font-display mb-5">Kesimpulan & Saran</h2>
 
-    <div className="grid md:grid-cols-2 gap-4 w-full max-w-6xl">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-6xl">
       <div className="bg-white border-2 border-slate-200 rounded-2xl p-5 text-left">
         <h3 className="font-extrabold text-xl md:text-2xl text-slate-800 mb-3 flex items-center gap-2">
           <CheckCircle size={20} className="text-feather" /> Kesimpulan

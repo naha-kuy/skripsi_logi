@@ -13,7 +13,7 @@ export const Slide11: React.FC<{ isActive: boolean }> = ({ isActive }) => (
   <div className="flex flex-col items-center px-4 md:px-6 pt-2 pb-3 select-none w-full">
     <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 font-display mb-5">Evaluasi</h2>
 
-    <div className="grid sm:grid-cols-3 gap-4 w-full max-w-5xl">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-5xl">
       {items.map(item => {
         const Icon = item.icon;
         return (

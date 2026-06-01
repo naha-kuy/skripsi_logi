@@ -125,19 +125,59 @@ export const draftQuestionWithAI = async (topic: string, difficulty: string, con
       Aturan Penting:
       1. Integrasikan ke-4 pilar Computational Thinking secara halus ke dalam alur pemecahan masalah soal cerita. DILARANG KERAS mencetak/menyebutkan kata-kata "Decomposition", "Pattern Recognition", "Abstraction", "Algorithm" (atau terjemahannya) di dalam teks soal maupun penjelasan.
       2. Bahasa yang digunakan harus luwes, naratif, dan komunikatif agar enak dibaca dan mudah dipahami oleh siswa SMP.
-      3. Penulisan Matematika yang Rapi: Gunakan LaTeX untuk rumus dan persamaan. Untuk satuan (seperti cm, m), tulis sebagai teks biasa di luar blok LaTeX (contoh: $L = 30$ cm, BUKAN $L = 30 \text{cm}$).
+      3. Penulisan Matematika yang Rapi: Gunakan LaTeX untuk rumus dan persamaan. Untuk satuan (seperti cm, m), tulis sebagai teks biasa di luar blok LaTeX (contoh: $L = 30$ cm, BUKAN $L = 30 \\text{cm}$).
       4. Pada bagian "explanation", jabarkan perhitungan langkah demi langkah dengan rapi. Jika perhitungannya panjang, gunakan block equation ( $$...$$ ). Jangan menyisipkan baris baru (\\\\) sembarangan di luar blok LaTeX.
       5. Berikan 4 pilihan jawaban yang khas, salah satunya benar. Pilihan salah harus mengecoh (melambangkan kesalahan bernalar spesifik).
       6. Berikan "optionFeedback", yaitu feedback singkat (1-2 kalimat) untuk MASING-MASING opsi jawaban. Jelaskan di titik mana siswa mungkin keliru sehingga memilih opsi tersebut, dan beri semangat jika benar.
-      
-      Kembalikan HANYA dalam format JSON valid dan persis mengikuti struktur berikut (tanpa markdown block sama sekali):
+
+      Di bawah ini adalah 2 contoh soal yang sudah jadi sebagai acuan gaya penulisan (few-shot prompting). Perhatikan bagaimana soal cerita dikemas secara naratif, bagaimana CT diintegrasikan secara implisit, dan bagaimana feedback diberikan untuk setiap opsi:
+
+      === CONTOH 1 (Prisma Segitiga) ===
       {
-        "question": "Teks soal cerita yang komunikatif dengan pilar CT tersirat (tanpa menyebut nama pilarnya) dan $rumus LaTeX$",
+        "question": "Bu Ratih membuat sebuah kolam renang berbentuk prisma segitiga untuk perumahan elit. Alas segitiga kolam memiliki panjang 8 meter dan tinggi 5 meter. Kedalaman kolam yang seragam adalah 12 meter. Bu Ratih ingin menghitung volume air yang dibutuhkan untuk mengisi penuh kolam tersebut. Bagaimana cara menghitung volume air yang diperlukan?",
+        "options": [
+          "Volume = (\\\\(\\\\frac{1}{2}\\\\) \\\\times 8 \\\\times 5) \\\\times 12",
+          "Volume = (8 \\\\times 5) \\\\times 12",
+          "Volume = (8 + 5) \\\\times 12",
+          "Volume = \\\\(\\\\frac{1}{2}\\\\) \\\\times 8 \\\\times 5 \\\\times 12 \\\\times 2"
+        ],
+        "correctAnswer": "Volume = (\\\\(\\\\frac{1}{2}\\\\) \\\\times 8 \\\\times 5) \\\\times 12",
+        "explanation": "Kolam renang berbentuk prisma segitiga, maka volumenya adalah luas alas segitiga dikali tinggi prisma (kedalaman). $$V = \\\\(\\\\frac{1}{2}\\\\) \\\\times a \\\\times t_{\\\\text{segitiga}} \\\\times t_{\\\\text{prisma}} = \\\\(\\\\frac{1}{2}\\\\) \\\\times 8 \\\\times 5 \\\\times 12 = 240\\\\text{ m}^3$$",
+        "optionFeedback": {
+          "Volume = (\\\\(\\\\frac{1}{2}\\\\) \\\\times 8 \\\\times 5) \\\\times 12": "Benar! Kamu memahami bahwa volume prisma adalah luas alas dikali tinggi. Hebat!",
+          "Volume = (8 \\\\times 5) \\\\times 12": "Hampir saja! Rumus luas segitiga adalah \\\\(\\\\frac{1}{2}\\\\) \\\\times alas \\\\times tinggi. Kamu lupa membagi dua. Coba periksa lagi langkahmu.",
+          "Volume = (8 + 5) \\\\times 12": "Perhatikan bahwa menghitung volume tidak menggunakan penjumlahan panjang dan tinggi, melainkan perkalian. Ingat rumus luas segitiga dulu ya.",
+          "Volume = \\\\(\\\\frac{1}{2}\\\\) \\\\times 8 \\\\times 5 \\\\times 12 \\\\times 2": "Kamu mengalikan dengan 2 di akhir, padahal tidak perlu. Volume prisma cukup luas alas dikali tinggi. Tidak ada perkalian dua kali."
+        }
+      }
+
+      === CONTOH 2 (Balok) ===
+      {
+        "question": "Andi memiliki sebuah akuarium berbentuk balok dengan panjang 80 cm, lebar 50 cm, dan tinggi 40 cm. Ia ingin mengisi akuarium tersebut dengan air hingga ketinggian 35 cm. Berapa volume air yang dibutuhkan Andi untuk mengisi akuariumnya?",
+        "options": [
+          "140.000 cm\\\\(^3\\\\)",
+          "160.000 cm\\\\(^3\\\\)",
+          "120.000 cm\\\\(^3\\\\)",
+          "100.000 cm\\\\(^3\\\\)"
+        ],
+        "correctAnswer": "140.000 cm\\\\(^3\\\\)",
+        "explanation": "Volume air dihitung dengan panjang \\\\times lebar \\\\times tinggi air (bukan tinggi akuarium). $$V = 80 \\\\times 50 \\\\times 35 = 140.000\\\\text{ cm}^3$$ Tinggi akuarium 40 cm tidak dipakai karena air hanya diisi setinggi 35 cm.",
+        "optionFeedback": {
+          "140.000 cm\\\\(^3\\\\)": "Benar! Kamu jeli menggunakan tinggi air (35 cm), bukan tinggi akuarium. Pertahankan!",
+          "160.000 cm\\\\(^3\\\\)": "Kamu menggunakan tinggi akuarium (40 cm) bukan tinggi air (35 cm). Baca soal dengan teliti ya.",
+          "120.000 cm\\\\(^3\\\\)": "Hasil ini mungkin dari perkalian yang kurang tepat. Coba hitung 80 \\\\times 50 \\\\times 35 langkah demi langkah.",
+          "100.000 cm\\\\(^3\\\\)": "Kesalahan perhitungan. Pastikan kamu mengalikan panjang, lebar, dan tinggi air dengan benar: 80 \\\\times 50 = 4.000, lalu 4.000 \\\\times 35 = ?"
+        }
+      }
+
+      Kembalikan HANYA dalam format JSON valid persis seperti dua contoh di atas (tanpa markdown block sama sekali), dengan struktur:
+      {
+        "question": "Soal cerita matematika bergaya naratif seperti contoh, dengan $rumus LaTeX$",
         "options": ["Opsi A", "Opsi B", "Opsi C", "Opsi D"],
         "correctAnswer": "Opsi yang benar persis seperti di array",
         "explanation": "Penjelasan langkah-demi-langkah yang rapi dan terstruktur dengan block $$rumus LaTeX$$",
         "optionFeedback": {
-            "Opsi A": "Feedback singkat jika anak memilih ini",
+            "Opsi A": "Feedback singkat dengan semangat jika benar, atau jelaskan kesalahan jika salah",
             "Opsi B": "Feedback singkat",
             "Opsi C": "Feedback singkat",
             "Opsi D": "Feedback singkat"

@@ -198,7 +198,7 @@ export const Presentation: React.FC = () => {
       )}
 
       <main className={`flex-1 select-none ${
-        isCoverOrClosing ? 'overflow-hidden p-0' : 'overflow-y-auto px-6 py-4'
+        isCoverOrClosing ? 'overflow-hidden p-0' : 'overflow-y-auto px-3 sm:px-6 py-4'
       }`}>
         <div key={currentSlide} className={`flex-1 w-full ${isCoverOrClosing ? '' : 'max-w-7xl'} mx-auto animate-[fadeIn_0.35s_ease-out]`}>
           {renderSlide()}

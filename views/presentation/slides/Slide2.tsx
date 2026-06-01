@@ -18,9 +18,9 @@ export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
   <div className="flex flex-col items-center px-4 md:px-6 pt-2 pb-3 select-none w-full">
     <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 font-display mb-6">Outline Presentasi</h2>
 
-    <div className="grid grid-cols-3 grid-rows-[auto_auto] gap-5 w-full max-w-6xl">
+    <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[auto_auto] gap-5 w-full max-w-6xl">
       <button onClick={() => goSlide(items[0].target)}
-        className="group col-span-2 bg-white border-2 border-slate-200 hover:border-cardinal rounded-2xl p-5 text-left transition-all duration-200 hover:shadow-lg hover:shadow-cardinal/10 hover:-translate-y-0.5"
+        className="group md:col-span-2 bg-white border-2 border-slate-200 hover:border-cardinal rounded-2xl p-5 text-left transition-all duration-200 hover:shadow-lg hover:shadow-cardinal/10 hover:-translate-y-0.5"
       >
         <div className="grid grid-cols-[auto_1fr_auto] gap-x-5 gap-y-2 items-center">
           <div className="row-span-2 flex items-center justify-center h-full py-1">
@@ -41,7 +41,7 @@ export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
       </button>
 
       <button onClick={() => goSlide(items[1].target)}
-        className="group col-span-1 row-span-2 bg-white border-2 border-slate-200 hover:border-macaw rounded-2xl p-5 text-left transition-all duration-200 hover:shadow-lg hover:shadow-macaw/10 hover:-translate-y-0.5 flex flex-col justify-between"
+        className="group md:col-span-1 md:row-span-2 bg-white border-2 border-slate-200 hover:border-macaw rounded-2xl p-5 text-left transition-all duration-200 hover:shadow-lg hover:shadow-macaw/10 hover:-translate-y-0.5 flex flex-col justify-between"
       >
         <div className="flex flex-col gap-1">
           <div className="flex items-start justify-between">
@@ -66,7 +66,7 @@ export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
       </button>
 
       <button onClick={() => goSlide(items[2].target)}
-        className="group col-span-1 bg-white border-2 border-slate-200 hover:border-feather rounded-2xl p-5 text-left transition-all duration-200 hover:shadow-lg hover:shadow-feather/10 hover:-translate-y-0.5"
+        className="group md:col-span-1 bg-white border-2 border-slate-200 hover:border-feather rounded-2xl p-5 text-left transition-all duration-200 hover:shadow-lg hover:shadow-feather/10 hover:-translate-y-0.5"
       >
         <div className="grid gap-y-2">
           <div className="flex items-center justify-between">
@@ -81,7 +81,7 @@ export const Slide2: React.FC<{ goSlide: (n: number) => void }> = ({ goSlide }) 
       </button>
 
       <button onClick={() => goSlide(items[3].target)}
-        className="group col-span-1 bg-white border-2 border-slate-200 hover:border-bee rounded-2xl p-5 text-left transition-all duration-200 hover:shadow-lg hover:shadow-bee/10 hover:-translate-y-0.5"
+        className="group md:col-span-1 bg-white border-2 border-slate-200 hover:border-bee rounded-2xl p-5 text-left transition-all duration-200 hover:shadow-lg hover:shadow-bee/10 hover:-translate-y-0.5"
       >
         <div className="grid gap-y-2">
           <div className="flex items-center justify-between">

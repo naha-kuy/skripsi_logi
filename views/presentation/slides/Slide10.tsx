@@ -12,7 +12,7 @@ export const Slide10 = () => (
   <div className="flex flex-col items-center px-4 md:px-6 pt-2 pb-3 select-none w-full">
     <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 font-display mb-5">Implementasi</h2>
 
-    <div className="grid grid-cols-3 gap-4 w-full max-w-4xl mb-4">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-4xl mb-4">
       {items.map(item => {
         const Icon = item.icon;
         return (
