@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Chat } from "@google/genai";
-import { ai, getSystemInstruction, MODEL_NAME } from '../services/gemini';
+import { getSystemInstruction, getBestAvailableClient, getCurrentModelName } from '../services/gemini';
 import { UserData } from '../models/types';
 
 /**
@@ -44,8 +44,13 @@ export const useChat = (userData: UserData | null) => {
     if (!userData) return;
     try {
       // Inisialisasi Model dengan System Instruction
-      const model = ai.chats.create({
-        model: MODEL_NAME,
+      const best = getBestAvailableClient();
+      if (!best) {
+        console.error("Semua API Key AI habis. Chat tidak bisa diinisialisasi.");
+        return;
+      }
+      const model = best.client.chats.create({
+        model: best.model,
         config: {
             systemInstruction: getSystemInstruction(userData),
             temperature: 0.7
