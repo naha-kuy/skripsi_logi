@@ -1,9 +1,9 @@
 import React from 'react';
 
 export const Slide16 = () => (
-  <div className="flex flex-col items-center justify-center text-center text-white px-2 md:px-4 w-full max-w-6xl mx-auto h-full select-none py-0">
-    <div className="animate-bounce-slow mb-4 md:mb-6">
-      <div className="w-24 md:w-32 h-24 md:h-32 bg-white/10 backdrop-blur border-2 border-white/20 rounded-full flex items-center justify-center text-4xl md:text-5xl shadow-xl overflow-hidden relative">
+  <div className="flex flex-col items-center justify-center text-center text-white px-4 w-full max-w-7xl mx-auto h-full select-none py-0">
+    <div className="animate-bounce-slow mb-6">
+      <div className="w-32 md:w-40 h-32 md:h-40 bg-white/10 backdrop-blur border-2 border-white/20 rounded-full flex items-center justify-center text-5xl md:text-6xl shadow-xl overflow-hidden relative">
         <img 
           src="/images/presentation/logo_um.png" 
           alt="Logo UM" 
@@ -19,18 +19,18 @@ export const Slide16 = () => (
         </div>
       </div>
     </div>
-    <h1 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight leading-tight max-w-5xl text-white font-display mb-3 md:mb-4">
+    <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight max-w-5xl text-white font-display mb-4">
       Terima Kasih
     </h1>
-    <p className="text-xs md:text-sm lg:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed mb-3 md:mb-5 font-display italic">
+    <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-4 font-display italic">
       "Meningkatkan Berpikir Komputasional Siswa melalui Platform Pembelajaran Berbasis Game Terintegrasi AI Generatif"
     </p>
     
-    <div className="h-1 w-24 md:w-32 bg-gradient-to-r from-feather to-feather-light rounded-full mb-4 md:mb-6 mx-auto" />
+    <div className="h-1.5 w-32 md:w-40 bg-gradient-to-r from-feather to-feather-light rounded-full mb-6 mx-auto" />
 
-    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-3 md:p-5 w-full max-w-4xl mx-auto shadow-2xl flex flex-col md:flex-row gap-3 md:gap-5 items-center justify-center text-left">
+    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 w-full max-w-5xl mx-auto shadow-2xl flex flex-col md:flex-row gap-5 items-center justify-center text-left">
       <div className="shrink-0 flex flex-col items-center">
-        <div className="w-20 md:w-24 h-20 md:h-24 rounded-2xl bg-white/10 border-2 border-white/20 overflow-hidden flex items-center justify-center text-slate-300 relative shadow-md">
+        <div className="w-24 md:w-28 h-24 md:h-28 rounded-2xl bg-white/10 border-2 border-white/20 overflow-hidden flex items-center justify-center text-slate-300 relative shadow-md">
           <img 
             src="/images/presentation/foto_pribadi.png" 
             alt="Foto Pribadi" 
@@ -40,24 +40,24 @@ export const Slide16 = () => (
         </div>
       </div>
 
-      <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 text-sm md:text-base">
+      <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 text-base md:text-lg">
         <div>
-          <p className="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wider">Nama Mahasiswa</p>
-          <p className="text-sm md:text-base lg:text-lg font-extrabold text-white mt-0.5">Muhammad Nafis Hakim</p>
-          <p className="text-sm text-slate-300">NIM. 220311605217</p>
+          <p className="text-base md:text-lg text-slate-400 font-bold uppercase tracking-wider">Nama Mahasiswa</p>
+          <p className="text-lg md:text-xl font-extrabold text-white mt-0.5">Muhammad Nafis Hakim</p>
+          <p className="text-base text-slate-300">NIM. 220311605217</p>
         </div>
         <div>
-          <p className="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wider">Program Studi</p>
-          <p className="text-sm md:text-base lg:text-lg font-bold text-white mt-0.5">S1 Pendidikan Matematika</p>
-          <p className="text-sm text-slate-300">Jurusan Matematika</p>
+          <p className="text-base md:text-lg text-slate-400 font-bold uppercase tracking-wider">Program Studi</p>
+          <p className="text-lg md:text-xl font-bold text-white mt-0.5">S1 Pendidikan Matematika</p>
+          <p className="text-base text-slate-300">Jurusan Matematika</p>
         </div>
         <div>
-          <p className="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wider">Dosen Pembimbing</p>
-          <p className="text-sm md:text-base lg:text-lg font-bold text-feather-light mt-0.5">Indriati Nurul Hidayah, S.Pd, M.Si</p>
+          <p className="text-base md:text-lg text-slate-400 font-bold uppercase tracking-wider">Dosen Pembimbing</p>
+          <p className="text-lg md:text-xl font-bold text-feather-light mt-0.5">Indriati Nurul Hidayah, S.Pd, M.Si</p>
         </div>
         <div>
-          <p className="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wider">Tanggal Ujian Sidang</p>
-          <p className="text-sm md:text-base lg:text-lg font-bold text-white mt-0.5">2 Juni 2026</p>
+          <p className="text-base md:text-lg text-slate-400 font-bold uppercase tracking-wider">Tanggal Ujian Sidang</p>
+          <p className="text-lg md:text-xl font-bold text-white mt-0.5">2 Juni 2026</p>
         </div>
       </div>
     </div>

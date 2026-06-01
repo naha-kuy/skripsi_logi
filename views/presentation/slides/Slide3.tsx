@@ -1,35 +1,82 @@
 import React from 'react';
-import { Box, Brain, BookX } from 'lucide-react';
+import { EyeOff, Gamepad2, Sparkles } from 'lucide-react';
 
-const blocks = [
-  { icon: Box, title: 'Visualisasi 3D', points: ['Siswa sulit visualisasi', 'Konsep abstrak geometri', 'Media konvensional statis'], color: 'text-cardinal', bg: 'bg-cardinal/5', border: 'border-cardinal/10' },
-  { icon: Brain, title: 'CT Rendah', points: ['Computational Thinking rendah', 'Kurang latihan terstruktur', 'Kurikulum tuntut CT'], color: 'text-macaw', bg: 'bg-macaw/5', border: 'border-macaw/10' },
-  { icon: BookX, title: 'Media Konvensional', points: ['Buku teks tidak interaktif', 'Minim teknologi adaptif', 'Perlu inovasi pembelajaran'], color: 'text-bee-dark', bg: 'bg-bee/5', border: 'border-bee/10' }
+const columns = [
+  {
+    icon: EyeOff,
+    title: 'Akar Permasalahan',
+    accent: 'bg-cardinal',
+    accentLight: 'bg-cardinal/10',
+    color: 'text-cardinal',
+    points: [
+      'Visual 2D statis buku teks',
+      'Hambat abstraksi geometri',
+      'CT stagnasi tanpa praktik',
+    ],
+    ref: 'Saralar & Ainsworth (2025); Ye et al. (2023)'
+  },
+  {
+    icon: Gamepad2,
+    title: 'Kesenjangan Solusi',
+    accent: 'bg-bee',
+    accentLight: 'bg-bee/10',
+    color: 'text-bee-dark',
+    points: [
+      'Gamifikasi picu tebak jawaban',
+      'Kejar poin, bukan kompetensi',
+      'Mastery learning terabaikan',
+    ],
+    ref: 'Chen & Wang (2026)'
+  },
+  {
+    icon: Sparkles,
+    title: 'Inovasi Platform Logi',
+    accent: 'bg-feather',
+    accentLight: 'bg-feather/10',
+    color: 'text-feather-dark',
+    points: [
+      'AI Generatif + HITL personal',
+      'Bantuan belajar instan adaptif',
+      'Kurasi guru cegah halusinasi',
+    ],
+    ref: 'Atkinson (2025); Bastani et al. (2025)'
+  }
 ];
 
 export const Slide3 = () => (
-  <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
-    <p className="text-sm font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Pendahuluan</p>
-    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">Tiga Tantangan Utama</h2>
-    <p className="text-sm md:text-base text-slate-500 mb-2.5 max-w-2xl">Pembelajaran geometri menghadapi kendala fundamental</p>
+  <div className="flex flex-col items-center px-4 md:px-6 pt-2 pb-3 select-none w-full">
+    <div className="flex items-center gap-2 mb-1">
+      <div className="h-0.5 w-6 md:w-8 bg-feather rounded-full" />
+      <span className="text-xs md:text-sm font-black text-feather-dark uppercase tracking-[0.25em]">Urgensi</span>
+      <div className="h-0.5 w-6 md:w-8 bg-feather rounded-full" />
+    </div>
+    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 font-display mb-5">
+      Mengapa Platform Baru?
+    </h2>
 
-    <div className="grid md:grid-cols-3 gap-2 md:gap-3 w-full max-w-5xl">
-      {blocks.map(b => {
-        const Icon = b.icon;
+    <div className="grid md:grid-cols-3 gap-4 w-full max-w-7xl">
+      {columns.map(col => {
+        const Icon = col.icon;
         return (
-          <div key={b.title} className={`${b.bg} ${b.border} border-2 rounded-2xl p-3 md:p-4 text-left transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}>
-            <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl ${b.bg} border ${b.border} flex items-center justify-center mb-2`}>
-              <Icon size={22} className={b.color} />
+          <div key={col.title} className="bg-white border-2 border-slate-200 rounded-2xl overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lg">
+            <div className={`h-1.5 ${col.accent}`} />
+            <div className="p-5">
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`w-12 h-12 rounded-xl ${col.accentLight} flex items-center justify-center`}>
+                  <Icon size={24} className={col.color} />
+                </div>
+                <h3 className={`font-extrabold text-xl md:text-2xl ${col.color}`}>{col.title}</h3>
+              </div>
+              <ul className="space-y-2 mb-4">
+                {col.points.map(p => (
+                  <li key={p} className="flex items-start gap-2 text-lg md:text-xl text-slate-700">
+                    <span className={`w-1.5 h-1.5 rounded-full ${col.color.replace('text-', 'bg-')} mt-2.5 shrink-0`} />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs md:text-sm text-slate-400 italic leading-relaxed">{col.ref}</p>
             </div>
-            <h3 className={`font-extrabold text-sm md:text-base mb-1.5 ${b.color}`}>{b.title}</h3>
-            <ul className="space-y-1">
-              {b.points.map(p => (
-                <li key={p} className="flex items-start gap-1.5 text-sm md:text-base text-slate-700">
-                  <span className={`w-1 h-1 rounded-full ${b.color === 'text-cardinal' ? 'bg-cardinal' : b.color === 'text-macaw' ? 'bg-macaw' : 'bg-bee-dark'} mt-1.5 shrink-0`} />
-                  {p}
-                </li>
-              ))}
-            </ul>
           </div>
         );
       })}

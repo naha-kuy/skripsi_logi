@@ -11,21 +11,19 @@ const conclusions = [
 const suggestions = ['Perluasan materi matematika lainnya', 'Uji coba skala lebih luas', 'Pengembangan game kolaboratif siswa'];
 
 export const Slide15: React.FC<{ isActive: boolean }> = ({ isActive }) => (
-  <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
-    <p className="text-sm font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Penutup</p>
-    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">Kesimpulan & Saran</h2>
-    <p className="text-sm md:text-base text-slate-500 mb-2.5">Ringkasan hasil penelitian</p>
+  <div className="flex flex-col items-center px-4 md:px-6 pt-2 pb-3 select-none w-full">
+    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 font-display mb-5">Kesimpulan & Saran</h2>
 
-    <div className="grid md:grid-cols-2 gap-3 w-full max-w-5xl">
-      <div className="bg-white border-2 border-slate-200 rounded-2xl p-3 md:p-4 text-left">
-        <h3 className="font-extrabold text-base md:text-lg text-slate-800 mb-2 flex items-center gap-2">
-          <CheckCircle size={16} className="text-feather" /> Kesimpulan
+    <div className="grid md:grid-cols-2 gap-4 w-full max-w-6xl">
+      <div className="bg-white border-2 border-slate-200 rounded-2xl p-5 text-left">
+        <h3 className="font-extrabold text-xl md:text-2xl text-slate-800 mb-3 flex items-center gap-2">
+          <CheckCircle size={20} className="text-feather" /> Kesimpulan
         </h3>
         <div className="space-y-2">
           {conclusions.map(c => (
-            <div key={c.label} className={`${c.bg} ${c.border} border rounded-xl p-3 md:p-4 flex items-center justify-between`}>
-              <span className="font-bold text-sm md:text-base text-slate-700">{c.label}</span>
-              <span className={`font-black text-sm md:text-base ${c.color}`}>
+            <div key={c.label} className={`${c.bg} ${c.border} border rounded-xl p-3 flex items-center justify-between`}>
+              <span className="font-bold text-lg md:text-xl text-slate-700">{c.label}</span>
+              <span className={`font-black text-lg md:text-xl ${c.color}`}>
                 <CountUp value={c.numValue} trigger={isActive} decimals={c.decimals} suffix={c.suffix} /> {c.text}
               </span>
             </div>
@@ -33,14 +31,14 @@ export const Slide15: React.FC<{ isActive: boolean }> = ({ isActive }) => (
         </div>
       </div>
 
-      <div className="bg-white border-2 border-slate-200 rounded-2xl p-3 md:p-4 text-left">
-        <h3 className="font-extrabold text-base md:text-lg text-slate-800 mb-2 flex items-center gap-2">
-          <Lightbulb size={16} className="text-bee-dark" /> Saran
+      <div className="bg-white border-2 border-slate-200 rounded-2xl p-5 text-left">
+        <h3 className="font-extrabold text-xl md:text-2xl text-slate-800 mb-3 flex items-center gap-2">
+          <Lightbulb size={20} className="text-bee-dark" /> Saran
         </h3>
-        <ul className="space-y-1.5">
+        <ul className="space-y-2">
           {suggestions.map(s => (
-            <li key={s} className="flex items-start gap-2 text-sm md:text-base text-slate-700">
-              <ArrowRight size={14} className="text-feather mt-0.5 shrink-0" />
+            <li key={s} className="flex items-start gap-2 text-lg md:text-xl text-slate-700">
+              <ArrowRight size={18} className="text-feather mt-0.5 shrink-0" />
               {s}
             </li>
           ))}

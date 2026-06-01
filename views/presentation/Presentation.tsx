@@ -48,19 +48,16 @@ export const Presentation: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isCoverOrClosing = currentSlide === 1 || currentSlide === 17;
 
-  // Read slide from pathname on mount
   useEffect(() => {
     const match = window.location.pathname.match(/\/presentation\/slide-(\d+)/);
     if (match) {
       const n = parseInt(match[1], 10);
       if (n >= 1 && n <= TOTAL_SLIDES) setCurrentSlide(n);
     } else if (window.location.pathname !== '/presentation') {
-      // Fallback to first slide for unknown paths
       window.history.replaceState(null, '', '/presentation/slide-1');
     }
   }, []);
 
-  // Sync URL with current slide (path-based)
   useEffect(() => {
     const expected = `/presentation/slide-${currentSlide}`;
     if (window.location.pathname !== expected) {
@@ -68,7 +65,6 @@ export const Presentation: React.FC = () => {
     }
   }, [currentSlide]);
 
-  // Listen to popstate for browser back/forward
   useEffect(() => {
     const handlePop = () => {
       const match = window.location.pathname.match(/\/presentation\/slide-(\d+)/);
@@ -157,24 +153,21 @@ export const Presentation: React.FC = () => {
           : 'bg-white text-slate-800 min-h-screen'
       } ${isFullscreen && !isCoverOrClosing ? 'h-screen overflow-y-auto' : ''}`}
     >
-      {/* Sidebar */}
       {isSidebarOpen && (
         <div className="fixed inset-0 z-50 flex bg-black/40 backdrop-blur-sm">
-          <div className="w-72 bg-white h-full shadow-2xl flex flex-col border-r border-slate-200 animate-[slideInLeft_0.3s_ease-out]">
-            <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-              <span className="font-display font-black text-slate-800 flex items-center gap-2">
-                <X size={18} className="text-feather" /> Daftar Slide
-              </span>
-              <button onClick={() => setIsSidebarOpen(false)} className="p-1.5 hover:bg-slate-100 rounded-lg text-slate-400"><X size={18} /></button>
+          <div className="w-80 bg-white h-full shadow-2xl flex flex-col border-r border-slate-200 animate-[slideInLeft_0.3s_ease-out]">
+            <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+              <span className="font-display font-black text-xl text-slate-800">Daftar Slide</span>
+              <button onClick={() => setIsSidebarOpen(false)} className="p-2 hover:bg-slate-100 rounded-lg text-slate-400"><X size={22} /></button>
             </div>
-            <div className="flex-1 overflow-y-auto p-3 space-y-1">
+            <div className="flex-1 overflow-y-auto p-4 space-y-1.5">
               {slideTitles.map((t, i) => (
                 <button key={i} onClick={() => { goSlide(i + 1); setIsSidebarOpen(false); }}
-                  className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-bold flex items-center gap-3 transition-all ${
+                  className={`w-full text-left px-4 py-3 rounded-xl text-base font-bold flex items-center gap-3 transition-all ${
                     currentSlide === i + 1 ? 'bg-feather text-white' : 'text-slate-600 hover:bg-slate-50'
                   }`}
                 >
-                  <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black ${
+                  <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black ${
                     currentSlide === i + 1 ? 'bg-white/20' : 'bg-slate-200 text-slate-600'
                   }`}>{i + 1}</span>
                   {t}
@@ -186,22 +179,21 @@ export const Presentation: React.FC = () => {
         </div>
       )}
 
-      {/* Header */}
       {!isCoverOrClosing && (
-      <header className="flex items-center justify-between px-4 md:px-6 py-3 sticky top-0 z-30 transition-all bg-white/70 backdrop-blur-xl border-b border-white/10">
+      <header className="flex items-center justify-between px-6 py-2 sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200">
         <div className="flex items-center gap-3">
           <button onClick={() => setIsSidebarOpen(true)}
             className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-500 transition-colors"
-          ><Menu size={18} /></button>
+          ><Menu size={22} /></button>
           <div className="flex items-center gap-2">
-            <span className="w-8 h-8 rounded-xl flex items-center justify-center font-display font-black text-sm shadow-sm bg-feather text-white">L</span>
-            <span className="font-display font-black text-sm hidden sm:inline text-slate-700">Logi</span>
+            <span className="w-10 h-10 rounded-xl flex items-center justify-center font-display font-black text-base shadow-sm bg-feather text-white">L</span>
+            <span className="font-display font-black text-base hidden sm:inline text-slate-700">Logi</span>
           </div>
         </div>
         <div className="flex items-center gap-2">
           <select value={currentSlide} onChange={e => goSlide(Number(e.target.value))}
-            className="text-xs font-bold rounded-xl px-3 py-1.5 border outline-none cursor-pointer appearance-none pr-7 transition-colors border-slate-200 bg-slate-50 text-slate-700"
-            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundPosition: 'right 8px center', backgroundRepeat: 'no-repeat' }}
+            className="text-sm font-bold rounded-xl px-4 py-2 border outline-none cursor-pointer appearance-none pr-8 transition-colors border-slate-200 bg-slate-50 text-slate-700"
+            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundPosition: 'right 10px center', backgroundRepeat: 'no-repeat' }}
           >
             {Array.from({ length: TOTAL_SLIDES }, (_, i) => (
               <option key={i} value={i + 1} className="text-slate-900">
@@ -212,48 +204,36 @@ export const Presentation: React.FC = () => {
           <button onClick={toggleFullscreen}
             className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-500 transition-colors"
             title={isFullscreen ? 'Keluar (F)' : 'Fullscreen (F)'}
-          >{isFullscreen ? <Minimize2 size={16} /> : <Maximize2 size={16} />}</button>
+          >{isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}</button>
         </div>
       </header>
       )}
 
-      {/* Slide Content */}
       <main className={`flex-1 select-none ${
-        isCoverOrClosing ? 'overflow-hidden p-0 md:p-1' : 'overflow-y-auto px-4 md:px-6 py-2'
+        isCoverOrClosing ? 'overflow-hidden p-0' : 'overflow-y-auto px-6 py-4'
       }`}>
-        {isCoverOrClosing ? (
-          <div className="h-full flex flex-col">
-            <div key={currentSlide} className="flex-1 w-full max-w-6xl mx-auto animate-[fadeIn_0.35s_ease-out]">
-              {renderSlide()}
-            </div>
-          </div>
-        ) : (
-          <div className="h-full flex flex-col">
-            <div key={currentSlide} className="flex-1 w-full max-w-6xl mx-auto animate-[fadeIn_0.35s_ease-out]">
-              {renderSlide()}
-            </div>
-          </div>
-        )}
+        <div key={currentSlide} className={`flex-1 w-full ${isCoverOrClosing ? '' : 'max-w-7xl'} mx-auto animate-[fadeIn_0.35s_ease-out]`}>
+          {renderSlide()}
+        </div>
       </main>
 
-      {/* Footer with Progress Bar */}
       {!isCoverOrClosing && (
-      <footer className="sticky bottom-0 z-30 transition-all bg-white/70 backdrop-blur-xl border-t border-white/10">
-        <div className="h-1 w-full bg-slate-100">
+      <footer className="sticky bottom-0 z-30 bg-white/90 backdrop-blur-md border-t border-slate-200">
+        <div className="h-1.5 w-full bg-slate-100">
           <div className="h-full bg-feather transition-all duration-500 ease-out rounded-r-full"
             style={{ width: `${(currentSlide / TOTAL_SLIDES) * 100}%` }}
           />
         </div>
 
-        <div className="flex items-center justify-between px-4 md:px-6 py-3">
+        <div className="flex items-center justify-between px-6 py-2">
           <button onClick={prevSlide} disabled={currentSlide === 1}
-            className="flex items-center gap-1 text-xs font-bold uppercase tracking-wider py-2 px-4 disabled:opacity-30 disabled:pointer-events-none rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-600 transition-all"
-          ><ChevronLeft size={15} /> Prev</button>
+            className="flex items-center gap-1.5 text-sm font-bold uppercase tracking-wider py-2.5 px-5 disabled:opacity-30 disabled:pointer-events-none rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-600 transition-all"
+          ><ChevronLeft size={18} /> Prev</button>
 
-          <div className="hidden md:flex items-center gap-1.5">
+          <div className="hidden md:flex items-center gap-2">
             {Array.from({ length: TOTAL_SLIDES }).map((_, i) => (
               <button key={i} onClick={() => goSlide(i + 1)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   currentSlide === i + 1
                     ? 'bg-feather scale-125 ring-2 ring-feather/30'
                     : 'bg-slate-300 hover:bg-slate-400'
@@ -264,17 +244,17 @@ export const Presentation: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-bold tabular-nums mr-1 text-slate-400">
+            <span className="text-sm font-bold tabular-nums mr-1 text-slate-400">
               {currentSlide}/{TOTAL_SLIDES}
             </span>
             {currentSlide === TOTAL_SLIDES ? (
               <button onClick={() => goSlide(1)}
-                className="flex items-center gap-1.5 text-xs font-black uppercase tracking-widest py-2 px-5 rounded-xl bg-feather text-white shadow-md"
-              ><Home size={15} /> Cover</button>
+                className="flex items-center gap-1.5 text-sm font-black uppercase tracking-widest py-2.5 px-6 rounded-xl bg-feather text-white shadow-md"
+              ><Home size={18} /> Cover</button>
             ) : (
               <button onClick={nextSlide}
-                className="flex items-center gap-1.5 text-xs font-black uppercase tracking-widest py-2 px-5 rounded-xl bg-feather text-white shadow-md"
-              >Next <ChevronRight size={15} /></button>
+                className="flex items-center gap-1.5 text-sm font-black uppercase tracking-widest py-2.5 px-6 rounded-xl bg-feather text-white shadow-md"
+              >Next <ChevronRight size={18} /></button>
             )}
           </div>
         </div>

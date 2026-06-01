@@ -9,36 +9,34 @@ const cards = [
 ];
 
 const guruFlow = [
-  { icon: ClipboardList, label: 'Kelola', desc: 'Kelola materi 3D' },
-  { icon: Eye, label: 'Pantau', desc: 'Pantau progress siswa' },
-  { icon: MessageSquare, label: 'Feedback', desc: 'Review jawaban' },
-  { icon: TrendingUp, label: 'Evaluasi', desc: 'Analisis hasil CT' }
+  { icon: ClipboardList, label: 'Kelola' },
+  { icon: Eye, label: 'Pantau' },
+  { icon: MessageSquare, label: 'Feedback' },
+  { icon: TrendingUp, label: 'Evaluasi' }
 ];
 
 const siswaFlow = [
-  { icon: LogIn, label: 'Login', desc: 'Masuk platform' },
-  { icon: BookOpen, label: 'Belajar', desc: 'Materi 3D interaktif' },
-  { icon: Swords, label: 'Latihan', desc: 'Soal gamifikasi' },
-  { icon: Trophy, label: 'Progress', desc: 'Lihat pencapaian' }
+  { icon: LogIn, label: 'Login' },
+  { icon: BookOpen, label: 'Belajar' },
+  { icon: Swords, label: 'Latihan' },
+  { icon: Trophy, label: 'Progress' }
 ];
 
 export const Slide6 = () => (
-  <div className="flex flex-col items-center text-center px-4 md:px-6 pt-2 md:pt-3 pb-3 md:pb-4 select-none">
-    <p className="text-sm font-bold text-feather-dark uppercase tracking-[0.2em] mb-1">Tahap ADDIE</p>
-    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 font-display mb-1">Design</h2>
-    <p className="text-sm md:text-base text-slate-500 mb-2.5">Perancangan arsitektur dan pengalaman pengguna</p>
+  <div className="flex flex-col items-center px-4 md:px-6 pt-2 pb-3 select-none w-full">
+    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 font-display mb-5">Design</h2>
 
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 w-full max-w-5xl mb-2 md:mb-3">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-6xl mb-4">
       {cards.map(c => {
         const Icon = c.icon;
         return (
-          <div key={c.title} className={`${c.bg} ${c.border} border-2 rounded-2xl p-3 md:p-4 text-left transition-all hover:-translate-y-0.5 hover:shadow-md`}>
-            <div className={`w-8 h-8 rounded-xl ${c.bg} border ${c.border} flex items-center justify-center mb-1.5`}><Icon size={16} className={c.color} /></div>
-            <h3 className={`font-extrabold text-sm md:text-base mb-1.5 ${c.color}`}>{c.title}</h3>
+          <div key={c.title} className={`${c.bg} ${c.border} border-2 rounded-2xl p-5 text-left transition-all hover:-translate-y-0.5 hover:shadow-md`}>
+            <div className={`w-10 h-10 rounded-xl ${c.bg} border ${c.border} flex items-center justify-center mb-2`}><Icon size={20} className={c.color} /></div>
+            <h3 className={`font-extrabold text-lg md:text-xl mb-2 ${c.color}`}>{c.title}</h3>
             <ul className="space-y-1">
               {c.items.map(item => (
-                <li key={item} className="flex items-start gap-1.5 text-sm md:text-base text-slate-700">
-                  <span className={`w-1 h-1 rounded-full ${c.color.replace('text-', 'bg-')} mt-1.5 shrink-0`} />{item}
+                <li key={item} className="flex items-start gap-2 text-lg md:text-xl text-slate-700">
+                  <span className={`w-1.5 h-1.5 rounded-full ${c.color.replace('text-', 'bg-')} mt-2 shrink-0`} />{item}
                 </li>
               ))}
             </ul>
@@ -47,47 +45,41 @@ export const Slide6 = () => (
       })}
     </div>
 
-    <div className="w-full max-w-5xl space-y-1.5">
+    <div className="w-full max-w-6xl space-y-3">
       <div className="flex items-center gap-3">
         <div className="h-px flex-1 bg-fox/20" />
-        <span className="text-xs font-black text-fox uppercase tracking-wider">Guru</span>
+        <span className="text-sm font-black text-fox uppercase tracking-wider">Guru</span>
         <div className="h-px flex-1 bg-fox/20" />
       </div>
-      <div className="grid grid-cols-4 gap-1.5">
+      <div className="flex flex-wrap gap-3 justify-center">
         {guruFlow.map((f, i) => {
           const Icon = f.icon;
           return (
-            <div key={f.label} className="border-2 border-fox/10 bg-fox/5 rounded-2xl p-2 md:p-3">
-              <div className="grid grid-cols-[auto_1fr_auto] gap-x-1.5 gap-y-0.5">
-                <div className="row-span-2 w-10 h-10 rounded-2xl flex items-center justify-center border-2 bg-fox/10 border-fox/20">
-                  <Icon size={18} className="text-fox" />
-                </div>
-                <p className="font-extrabold text-xs md:text-sm text-slate-800 leading-tight text-left">{f.label}</p>
-                <span className="text-xs font-black text-fox text-right">{String(i + 1).padStart(2, '0')}</span>
-                <p className="text-xs md:text-sm text-slate-500 leading-tight text-left col-start-2 col-span-2">{f.desc}</p>
+            <div key={f.label} className="border-2 border-fox/10 bg-fox/5 rounded-2xl px-4 py-3 flex items-center gap-3">
+              <span className="text-sm font-black text-fox">{String(i + 1).padStart(2, '0')}</span>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center border-2 bg-fox/10 border-fox/20">
+                <Icon size={22} className="text-fox" />
               </div>
+              <p className="font-extrabold text-lg md:text-xl text-slate-800">{f.label}</p>
             </div>
           );
         })}
       </div>
       <div className="flex items-center gap-3">
         <div className="h-px flex-1 bg-macaw/20" />
-        <span className="text-xs font-black text-macaw uppercase tracking-wider">Siswa</span>
+        <span className="text-sm font-black text-macaw uppercase tracking-wider">Siswa</span>
         <div className="h-px flex-1 bg-macaw/20" />
       </div>
-      <div className="grid grid-cols-4 gap-1.5">
+      <div className="flex flex-wrap gap-3 justify-center">
         {siswaFlow.map((f, i) => {
           const Icon = f.icon;
           return (
-            <div key={f.label} className="border-2 border-macaw/10 bg-macaw/5 rounded-2xl p-2 md:p-3">
-              <div className="grid grid-cols-[auto_1fr_auto] gap-x-1.5 gap-y-0.5">
-                <div className="row-span-2 w-10 h-10 rounded-2xl flex items-center justify-center border-2 bg-macaw/10 border-macaw/20">
-                  <Icon size={18} className="text-macaw" />
-                </div>
-                <p className="font-extrabold text-xs md:text-sm text-slate-800 leading-tight text-left">{f.label}</p>
-                <span className="text-xs font-black text-macaw text-right">{String(i + 1).padStart(2, '0')}</span>
-                <p className="text-xs md:text-sm text-slate-500 leading-tight text-left col-start-2 col-span-2">{f.desc}</p>
+            <div key={f.label} className="border-2 border-macaw/10 bg-macaw/5 rounded-2xl px-4 py-3 flex items-center gap-3">
+              <span className="text-sm font-black text-macaw">{String(i + 1).padStart(2, '0')}</span>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center border-2 bg-macaw/10 border-macaw/20">
+                <Icon size={22} className="text-macaw" />
               </div>
+              <p className="font-extrabold text-lg md:text-xl text-slate-800">{f.label}</p>
             </div>
           );
         })}

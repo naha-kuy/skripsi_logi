@@ -27,7 +27,7 @@ export const BarAnimated: React.FC<{
   }, [isActive, delay]);
 
   return (
-    <div className={`h-1.5 ${trackBg} rounded-full overflow-hidden ${className}`}>
+    <div className={`h-2.5 ${trackBg} rounded-full overflow-hidden ${className}`}>
       <div className={`h-full ${color} rounded-full transition-all duration-1000 ease-out`} style={{ width: anim ? width : '0%' }} />
     </div>
   );
