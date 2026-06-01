@@ -190,22 +190,10 @@ export const Presentation: React.FC = () => {
             <span className="font-display font-black text-base hidden sm:inline text-slate-700">Logi</span>
           </div>
         </div>
-        <div className="flex items-center gap-2">
-          <select value={currentSlide} onChange={e => goSlide(Number(e.target.value))}
-            className="text-sm font-bold rounded-xl px-4 py-2 border outline-none cursor-pointer appearance-none pr-8 transition-colors border-slate-200 bg-slate-50 text-slate-700"
-            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundPosition: 'right 10px center', backgroundRepeat: 'no-repeat' }}
-          >
-            {Array.from({ length: TOTAL_SLIDES }, (_, i) => (
-              <option key={i} value={i + 1} className="text-slate-900">
-                Slide {i + 1} / {TOTAL_SLIDES}
-              </option>
-            ))}
-          </select>
-          <button onClick={toggleFullscreen}
-            className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-500 transition-colors"
-            title={isFullscreen ? 'Keluar (F)' : 'Fullscreen (F)'}
-          >{isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}</button>
-        </div>
+        <button onClick={toggleFullscreen}
+          className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-500 transition-colors"
+          title={isFullscreen ? 'Keluar (F)' : 'Fullscreen (F)'}
+        >{isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}</button>
       </header>
       )}
 

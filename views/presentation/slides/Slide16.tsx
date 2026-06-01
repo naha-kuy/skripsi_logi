@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Slide16 = () => (
-  <div className="flex flex-col items-center justify-center text-center text-white px-4 w-full max-w-7xl mx-auto h-full select-none py-0">
+  <div className="flex flex-col items-center justify-center text-center text-white px-4 w-full max-w-7xl mx-auto h-full select-none pt-8 md:pt-12">
     <div className="animate-bounce-slow mb-6">
       <div className="w-32 md:w-40 h-32 md:h-40 bg-white/10 backdrop-blur border-2 border-white/20 rounded-full flex items-center justify-center text-5xl md:text-6xl shadow-xl overflow-hidden relative">
         <img 
