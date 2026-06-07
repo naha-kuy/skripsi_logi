@@ -97,6 +97,13 @@ export interface StudentTeacherProgress {
   teacher_data?: Partial<UserData>; // relation
 }
 
+export interface CTIndicators {
+  decomposition: string;
+  patternRecognition: string;
+  abstraction: string;
+  algorithmDesign: string;
+}
+
 export interface StandardQuestion {
   id: string;
   teacher_id: string;
@@ -107,6 +114,7 @@ export interface StandardQuestion {
   correct_answer: string;
   explanation: string;
   option_feedback?: Record<string, string>;
+  ct_indicators?: CTIndicators;
 }
 
 /**

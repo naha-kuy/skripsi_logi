@@ -1,7 +1,8 @@
-import React from 'react';
-import { Plus, Edit2, Trash2, Wand2, Save, X, BookOpen, HelpCircle } from 'lucide-react';
+import React, { useState, useCallback } from 'react';
+import { Plus, Edit2, Trash2, Wand2, Save, X, BookOpen, HelpCircle, Brain, Eye, EyeOff, Send, Loader2, Zap } from 'lucide-react';
 import { LatexRenderer } from '../shared/LatexRenderer';
-import { StandardQuestion } from '../../models/types';
+import { StandardQuestion, CTIndicators } from '../../models/types';
+import { analyzeCTIndicators, reviseQuestionWithAI } from '../../services/gemini';
 
 interface QuestionEditorProps {
   currentQuestion: Partial<StandardQuestion>;
@@ -20,6 +21,72 @@ interface QuestionEditorProps {
 export const QuestionEditor: React.FC<QuestionEditorProps> = ({
   currentQuestion, setCurrentQuestion, activeTab, isGenerating, aiTopic, setAiTopic, aiContext, setAiContext, handleGenerateAI, handleSave, setIsEditing
 }) => {
+  const [showCT, setShowCT] = useState(false);
+  const [ctIndicators, setCtIndicators] = useState<CTIndicators | null>(null);
+  const [isAnalyzingCT, setIsAnalyzingCT] = useState(false);
+
+  const [revisionInput, setRevisionInput] = useState('');
+  const [isRevising, setIsRevising] = useState(false);
+
+  const handleToggleCT = useCallback(async () => {
+    if (showCT) {
+      setShowCT(false);
+      return;
+    }
+
+    if (ctIndicators) {
+      setShowCT(true);
+      return;
+    }
+
+    if (!currentQuestion.question_text || !currentQuestion.correct_answer) {
+      return;
+    }
+
+    setIsAnalyzingCT(true);
+    try {
+      const result = await analyzeCTIndicators(
+        currentQuestion.question_text || '',
+        currentQuestion.options || [],
+        currentQuestion.correct_answer || '',
+        currentQuestion.explanation || ''
+      );
+      setCtIndicators(result);
+      setShowCT(true);
+    } catch (err) {
+      console.error('CT Analysis failed:', err);
+    } finally {
+      setIsAnalyzingCT(false);
+    }
+  }, [showCT, ctIndicators, currentQuestion]);
+
+  const handleRevise = useCallback(async () => {
+    if (!revisionInput.trim() || !currentQuestion.question_text) return;
+
+    setIsRevising(true);
+    try {
+      const result = await reviseQuestionWithAI(
+        currentQuestion.question_text || '',
+        currentQuestion.options || [],
+        currentQuestion.correct_answer || '',
+        currentQuestion.explanation || '',
+        revisionInput.trim()
+      );
+      setCurrentQuestion({
+        ...currentQuestion,
+        question_text: result.question || currentQuestion.question_text,
+        options: result.options || currentQuestion.options,
+        correct_answer: result.correctAnswer || currentQuestion.correct_answer,
+        explanation: result.explanation || currentQuestion.explanation
+      });
+      setRevisionInput('');
+    } catch (err) {
+      console.error('Revision failed:', err);
+    } finally {
+      setIsRevising(false);
+    }
+  }, [revisionInput, currentQuestion, setCurrentQuestion]);
+
   return (
     <div className="bg-white/70 backdrop-blur-xl p-6 rounded-3xl border-2 border-slate-200 shadow-sm space-y-6">
       <div className="flex justify-between items-center border-b-2 border-slate-100 pb-4">
@@ -175,6 +242,47 @@ export const QuestionEditor: React.FC<QuestionEditorProps> = ({
                 </div>
               ))}
             </div>
+            {currentQuestion.question_text && currentQuestion.correct_answer && (
+              <>
+                <button
+                  onClick={handleToggleCT}
+                  disabled={isAnalyzingCT}
+                  className="w-full flex items-center justify-between p-3 rounded-xl border-2 border-slate-200 bg-white hover:bg-indigo-50 hover:border-indigo-300 transition-all active:scale-[0.99] disabled:opacity-50"
+                >
+                  <span className="flex items-center gap-2 text-sm font-bold text-slate-600">
+                    <Brain size={18} className="text-indigo-500" />
+                    Analisis Computational Thinking
+                  </span>
+                  <span className="flex items-center gap-1 text-xs font-bold text-indigo-500">
+                    {isAnalyzingCT ? (
+                      <><Loader2 size={16} className="animate-spin" /> Menganalisis...</>
+                    ) : showCT ? (
+                      <><EyeOff size={16} /> Sembunyikan</>
+                    ) : (
+                      <><Eye size={16} /> Tampilkan</>
+                    )}
+                  </span>
+                </button>
+                {showCT && ctIndicators && (
+                  <div className="bg-indigo-50 p-4 rounded-xl border-2 border-indigo-200 space-y-3 animate-in slide-in-from-top-2 fade-in">
+                    <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider flex items-center gap-1">
+                      <Zap size={14} /> Indikator Computational Thinking
+                    </span>
+                    {[
+                      { label: 'Dekomposisi', key: 'decomposition' as const },
+                      { label: 'Pengenalan Pola', key: 'patternRecognition' as const },
+                      { label: 'Abstraksi', key: 'abstraction' as const },
+                      { label: 'Desain Algoritma', key: 'algorithmDesign' as const }
+                    ].map(({ label, key }) => (
+                      <div key={key} className="bg-white p-3 rounded-lg border border-indigo-100">
+                        <span className="text-xs font-bold text-indigo-500 uppercase block mb-1">{label}</span>
+                        <p className="text-sm text-slate-700 leading-relaxed">{ctIndicators[key]}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
             {currentQuestion.explanation && (
               <div className="bg-blue-50 p-4 rounded-xl border-2 border-blue-100">
                 <span className="text-xs font-bold text-blue-500 uppercase">Penjelasan:</span>
@@ -185,13 +293,42 @@ export const QuestionEditor: React.FC<QuestionEditorProps> = ({
         </div>
       </div>
 
-      <div className="flex justify-end pt-4 border-t-2 border-slate-100">
-        <button 
-          onClick={handleSave}
-          className="bg-macaw text-white px-8 py-3 rounded-xl font-bold hover:bg-macaw-dark transition-all active:scale-95 flex items-center gap-2"
-        >
-          <Save size={20} /> Simpan Soal
-        </button>
+      <div className="pt-4 border-t-2 border-slate-100 space-y-3">
+        {currentQuestion.question_text && (
+          <div className="bg-slate-50 p-4 rounded-2xl border-2 border-slate-200">
+            <label className="block text-sm font-bold text-slate-600 mb-2 flex items-center gap-2">
+              <Wand2 size={16} className="text-indigo-500" /> Revisi dengan AI
+            </label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="Contoh: ubah tingkat kesulitan jadi lebih mudah, ganti konteks soal..."
+                className="flex-1 p-3 rounded-xl border-2 border-slate-200 focus:border-indigo-400 outline-none text-sm"
+                value={revisionInput}
+                onChange={(e) => setRevisionInput(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter' && !isRevising) handleRevise(); }}
+                disabled={isRevising}
+              />
+              <button
+                onClick={handleRevise}
+                disabled={!revisionInput.trim() || isRevising}
+                className="bg-indigo-600 text-white px-5 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all active:scale-95 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
+              >
+                {isRevising ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+                {isRevising ? 'Merevisi...' : 'Kirim'}
+              </button>
+            </div>
+            <p className="text-xs text-slate-400 mt-2">Hasil revisi akan langsung mengisi form di atas.</p>
+          </div>
+        )}
+        <div className="flex justify-end">
+          <button
+            onClick={handleSave}
+            className="bg-macaw text-white px-8 py-3 rounded-xl font-bold hover:bg-macaw-dark transition-all active:scale-95 flex items-center gap-2"
+          >
+            <Save size={20} /> Simpan Soal
+          </button>
+        </div>
       </div>
     </div>
   );

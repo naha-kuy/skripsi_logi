@@ -453,8 +453,118 @@ export const generatePretestQuestions = async (grade: string): Promise<(Question
 };
 
 // ============================================================================
-// SYSTEM INSTRUCTION FOR CHATBOT
+// NEW: CT INDICATOR ANALYSIS
 // ============================================================================
+export interface CTIndicators {
+  decomposition: string;
+  patternRecognition: string;
+  abstraction: string;
+  algorithmDesign: string;
+}
+
+export const analyzeCTIndicators = async (
+  questionText: string,
+  options: string[],
+  correctAnswer: string,
+  explanation: string
+): Promise<CTIndicators> => {
+  const prompt = `
+    Bertindaklah sebagai Expert Pendidikan Matematika & Computational Thinking. Analisis soal berikut dan jelaskan bagaimana keempat pilar Computational Thinking (CT) termanifestasi dalam soal ini.
+
+    Soal:
+    ${questionText}
+
+    Opsi Jawaban:
+    ${options.map((opt, i) => `${String.fromCharCode(65 + i)}. ${opt}`).join('\n')}
+
+    Jawaban Benar: ${correctAnswer}
+
+    Penjelasan Soal:
+    ${explanation}
+
+    Untuk SETIAP pilar CT di bawah ini, berikan penjelasan 2-3 kalimat yang spesifik merujuk pada soal di atas (BUKAN definisi umum). Gunakan bahasa Indonesia yang jelas dan naratif. JANGAN gunakan format bullet/numbering di dalam penjelasan masing-masing pilar.
+
+    Kembalikan HANYA JSON valid dengan struktur:
+    {
+      "decomposition": "Penjelasan dekomposisi untuk soal ini...",
+      "patternRecognition": "Penjelasan pengenalan pola untuk soal ini...",
+      "abstraction": "Penjelasan abstraksi untuk soal ini...",
+      "algorithmDesign": "Penjelasan algoritma untuk soal ini..."
+    }
+  `;
+
+  const result = await tryGenerateContent(prompt, true);
+  if (!result) {
+    throw new Error("Gagal menganalisis indikator CT. Semua API key/model habis.");
+  }
+
+  const parsed = parseAIResponse(result.text);
+  return {
+    decomposition: parsed.decomposition || "Tidak dapat dianalisis",
+    patternRecognition: parsed.patternRecognition || "Tidak dapat dianalisis",
+    abstraction: parsed.abstraction || "Tidak dapat dianalisis",
+    algorithmDesign: parsed.algorithmDesign || "Tidak dapat dianalisis"
+  };
+};
+
+// ============================================================================
+// NEW: QUESTION REVISION WITH AI
+// ============================================================================
+export const reviseQuestionWithAI = async (
+  currentQuestion: string,
+  currentOptions: string[],
+  currentCorrectAnswer: string,
+  currentExplanation: string,
+  instruction: string
+): Promise<Partial<Question>> => {
+  const prompt = `
+    Bertindaklah sebagai Expert Mathematics Content Creator untuk aplikasi 'Logi'. Tugas Anda adalah MEREVISI soal yang sudah ada berdasarkan instruksi pengguna.
+
+    Soal Saat Ini:
+    ${currentQuestion}
+
+    Opsi Saat Ini:
+    ${currentOptions.map((opt, i) => `${String.fromCharCode(65 + i)}. ${opt}`).join('\n')}
+
+    Jawaban Benar Saat Ini: ${currentCorrectAnswer}
+
+    Penjelasan Saat Ini:
+    ${currentExplanation}
+
+    Instruksi Revisi Pengguna:
+    "${instruction}"
+
+    Aturan:
+    1. Modifikasi soal, opsi, jawaban benar, dan penjelasan sesuai instruksi.
+    2. JANGAN mengubah/menghasilkan "optionFeedback" (feedback per opsi) - biarkan seperti semula.
+    3. Pastikan format LaTeX menggunakan double escaping (\\\\frac, \\\\times, dll) agar valid JSON.
+    4. Integrasikan Computational Thinking secara implisit (jangan sebut nama pilar CT).
+    5. Bahasa naratif, komunikatif untuk siswa SMP.
+
+    Kembalikan HANYA JSON valid dengan struktur:
+    {
+      "question": "Soal yang sudah direvisi...",
+      "options": ["Opsi A baru", "Opsi B baru", "Opsi C baru", "Opsi D baru"],
+      "correctAnswer": "Jawaban benar baru persis seperti di array options",
+      "explanation": "Penjelasan yang sudah direvisi..."
+    }
+  `;
+
+  const result = await tryGenerateContent(prompt, true);
+  if (!result) {
+    throw new Error("Gagal merevisi soal. Semua API key/model habis.");
+  }
+
+  const parsed = parseAIResponse(result.text);
+  return {
+    type: "multiple-choice",
+    question: parsed.question || currentQuestion,
+    options: parsed.options || currentOptions,
+    correctAnswer: parsed.correctAnswer || currentCorrectAnswer,
+    explanation: parsed.explanation || currentExplanation
+  };
+};
+
 export const getSystemInstruction = (user: UserData) => {
   const grade = user.grade || '8';
   const name = user.username || 'Sobat';
