@@ -37,6 +37,7 @@ const AdventureWrapper = lazy(() =>
   import('./views/student/GameWrappers').then(m => ({ default: m.AdventureWrapper }))
 );
 const Presentation = lazy(() => import('./views/presentation/Presentation'));
+const YPresentation = lazy(() => import('./presentasi/YPresentation'));
 
 
 // Fallback loader untuk Suspense
@@ -78,6 +79,7 @@ export const AppContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState(() => {
     const path = window.location.pathname.slice(1);
     if (path === 'presentation' || path.startsWith('presentation/')) return 'presentation';
+    if (path === 'presentasi' || path.startsWith('presentasi/')) return 'presentasi';
     return path || 'dashboard';
   });
   const [authView, setAuthView] = useState<'login' | 'register' | 'success'>('login');
@@ -91,6 +93,8 @@ export const AppContent: React.FC = () => {
       // Don't override presentation sub-paths (e.g., /presentation/slide-3)
       if (activeTab === 'presentation' && currentPath.startsWith('presentation/')) return;
       if (activeTab === 'presentation') return;
+      if (activeTab === 'presentasi' && currentPath.startsWith('presentasi/')) return;
+      if (activeTab === 'presentasi') return;
       window.history.pushState({}, '', `/${activeTab}`);
     }
   }, [activeTab]);
@@ -101,6 +105,8 @@ export const AppContent: React.FC = () => {
       const path = window.location.pathname.slice(1);
       if (path === 'presentation' || path.startsWith('presentation/')) {
         setActiveTab('presentation');
+      } else if (path === 'presentasi' || path.startsWith('presentasi/')) {
+        setActiveTab('presentasi');
       } else {
         setActiveTab(path || 'dashboard');
       }
@@ -220,6 +226,19 @@ export const AppContent: React.FC = () => {
         </div>
       }>
         <Presentation />
+      </Suspense>
+    );
+  }
+
+  if (activeTab === 'presentasi') {
+    return (
+      <Suspense fallback={
+        <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 text-white gap-4">
+          <Loader2 className="animate-spin text-fox" size={48} />
+          <p className="font-bold text-lg tracking-wide">Memuat Presentasi...</p>
+        </div>
+      }>
+        <YPresentation />
       </Suspense>
     );
   }
