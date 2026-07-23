@@ -45,44 +45,50 @@ export const Slide6 = () => (
       })}
     </div>
 
-    <div className="w-full max-w-6xl space-y-3">
+    <div className="w-full max-w-6xl space-y-4">
       <div className="flex items-center gap-3">
         <div className="h-px flex-1 bg-fox/20" />
         <span className="text-sm font-black text-fox uppercase tracking-wider">Guru</span>
         <div className="h-px flex-1 bg-fox/20" />
       </div>
-      <div className="flex flex-wrap gap-3 justify-center">
-        {guruFlow.map((f, i) => {
-          const Icon = f.icon;
-          return (
-            <div key={f.label} className="border-2 border-fox/10 bg-fox/5 rounded-2xl px-4 py-3 flex items-center gap-3">
-              <span className="text-sm font-black text-fox">{String(i + 1).padStart(2, '0')}</span>
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center border-2 bg-fox/10 border-fox/20">
-                <Icon size={22} className="text-fox" />
+      <div className="relative w-full max-w-xl mx-auto py-1">
+        <div className="absolute top-[1.6rem] left-[8%] right-[8%] h-0.5 bg-fox/15 hidden md:block" />
+        <div className="flex flex-wrap gap-y-3 justify-center relative z-10">
+          {guruFlow.map((f, i) => {
+            const Icon = f.icon;
+            return (
+              <div key={f.label} className="flex flex-col items-center gap-0.5 w-[4.5rem]">
+                <span className="text-[10px] font-black text-fox tracking-wider">{String(i + 1).padStart(2, '0')}</span>
+                <div className="w-11 h-11 rounded-full bg-fox/10 border-2 border-fox/30 flex items-center justify-center shadow-sm">
+                  <Icon size={18} className="text-fox" />
+                </div>
+                <p className="font-extrabold text-sm text-slate-800">{f.label}</p>
               </div>
-              <p className="font-extrabold text-lg md:text-xl text-slate-800">{f.label}</p>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
       <div className="flex items-center gap-3">
         <div className="h-px flex-1 bg-macaw/20" />
         <span className="text-sm font-black text-macaw uppercase tracking-wider">Siswa</span>
         <div className="h-px flex-1 bg-macaw/20" />
       </div>
-      <div className="flex flex-wrap gap-3 justify-center">
-        {siswaFlow.map((f, i) => {
-          const Icon = f.icon;
-          return (
-            <div key={f.label} className="border-2 border-macaw/10 bg-macaw/5 rounded-2xl px-4 py-3 flex items-center gap-3">
-              <span className="text-sm font-black text-macaw">{String(i + 1).padStart(2, '0')}</span>
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center border-2 bg-macaw/10 border-macaw/20">
-                <Icon size={22} className="text-macaw" />
+      <div className="relative w-full max-w-xl mx-auto py-1">
+        <div className="absolute top-[1.6rem] left-[8%] right-[8%] h-0.5 bg-macaw/15 hidden md:block" />
+        <div className="flex flex-wrap gap-y-3 justify-center relative z-10">
+          {siswaFlow.map((f, i) => {
+            const Icon = f.icon;
+            return (
+              <div key={f.label} className="flex flex-col items-center gap-0.5 w-[4.5rem]">
+                <span className="text-[10px] font-black text-macaw tracking-wider">{String(i + 1).padStart(2, '0')}</span>
+                <div className="w-11 h-11 rounded-full bg-macaw/10 border-2 border-macaw/30 flex items-center justify-center shadow-sm">
+                  <Icon size={18} className="text-macaw" />
+                </div>
+                <p className="font-extrabold text-sm text-slate-800">{f.label}</p>
               </div>
-              <p className="font-extrabold text-lg md:text-xl text-slate-800">{f.label}</p>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   </div>

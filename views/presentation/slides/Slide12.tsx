@@ -6,7 +6,7 @@ import { BarAnimated } from '../components/BarAnimated';
 const aspects = [
   { label: 'Kelayakan Konten Materi', numValue: 92.5, decimals: 1, barW: '92.5%', color: 'text-macaw', bar: 'bg-macaw' },
   { label: 'Kelayakan Desain Media', numValue: 92.18, decimals: 2, barW: '92.18%', color: 'text-feather-dark', bar: 'bg-feather' },
-  { label: 'Kelayakan Instrumen & Kesesuaian Soal', numValue: 91.25, decimals: 2, barW: '91.25%', color: 'text-bee-dark', bar: 'bg-bee' },
+  { label: 'Instrumen & Kesesuaian Soal', numValue: 91.25, decimals: 2, barW: '91.25%', color: 'text-bee-dark', bar: 'bg-bee' },
 ];
 
 export const Slide12: React.FC<{ isActive: boolean }> = ({ isActive }) => (

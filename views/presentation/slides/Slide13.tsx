@@ -4,16 +4,16 @@ import { CountUp } from '../components/CountUp';
 import { BarAnimated } from '../components/BarAnimated';
 
 const items = [
-  'Platform Logi mudah digunakan oleh siswa.',
-  'Alur permainan dalam platform mudah dipahami.',
-  'Petunjuk bermain dalam platform terlihat jelas.',
-  'Tampilan visual platform Logi menarik bagi siswa.',
-  'Tulisan dan angka dalam platform mudah dibaca.',
-  'Materi bangun ruang mudah dipahami.',
-  'Soal sesuai dengan materi yang sedang dipelajari.',
-  'Platform membantu memahami konsep bangun ruang.',
-  'Platform meningkatkan keterampilan soal cerita.',
-  'Belajar menggunakan platform terasa menyenangkan.',
+  'Mudah digunakan',
+  'Alur mudah dipahami',
+  'Petunjuk jelas',
+  'Tampilan menarik',
+  'Teks mudah dibaca',
+  'Materi mudah dipahami',
+  'Soal relevan',
+  'Membantu pemahaman konsep',
+  'Meningkatkan skill soal cerita',
+  'Menyenangkan',
 ];
 
 const percentages = [99.1, 98.21, 97.32, 97.32, 99.1, 99.1, 95.53, 99.1, 92.85, 99.1];

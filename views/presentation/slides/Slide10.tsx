@@ -31,7 +31,7 @@ export const Slide10 = () => (
           <Play size={18} className="text-feather" /> Alur Implementasi
         </p>
         <ol className="space-y-2">
-          {['Siswa mengerjakan pretest awal', 'Pengenalan platform Logi & fitur', 'Sesi pembelajaran menggunakan Logi', 'Siswa mengerjakan posttest akhir'].map((step, i) => (
+          {['Pretest awal', 'Orientasi platform', 'Sesi belajar aktif', 'Posttest akhir'].map((step, i) => (
             <li key={i} className="flex items-start gap-2 text-lg md:text-xl text-slate-700">
               <span className="w-7 h-7 rounded-full bg-feather/10 text-feather-dark font-extrabold text-base flex items-center justify-center shrink-0 mt-0.5">{i + 1}</span>
               {step}

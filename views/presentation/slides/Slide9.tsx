@@ -2,11 +2,11 @@ import React from 'react';
 import { User, Bot, Database, GraduationCap, Edit3, Sparkles, CheckCircle } from 'lucide-react';
 
 const steps = [
-  { number: '1', icon: User, title: 'Guru', desc: 'Menentukan KD & topik konteks soal', color: 'text-macaw', bg: 'bg-macaw/5', border: 'border-macaw/10' },
-  { number: '2', icon: Bot, title: 'AI Generatif', desc: 'Membuat pertanyaan dengan few-shot prompting dari hardcoded', color: 'text-feather-dark', bg: 'bg-feather/5', border: 'border-feather/10' },
-  { number: '3', icon: Edit3, title: 'Kurasi Guru', desc: 'Review, edit manual jika perlu, lalu setujui', color: 'text-bee-dark', bg: 'bg-bee/5', border: 'border-bee/10' },
-  { number: '4', icon: Database, title: 'Database', desc: 'Soal tersimpan & siap digunakan', color: 'text-fox', bg: 'bg-fox/5', border: 'border-fox/10' },
-  { number: '5', icon: GraduationCap, title: 'Siswa', desc: 'Mengerjakan soal di platform Logi', color: 'text-cardinal', bg: 'bg-cardinal/5', border: 'border-cardinal/10' },
+  { number: '1', icon: User, title: 'Guru', desc: 'Tentukan KD & topik soal', color: 'text-macaw', bg: 'bg-macaw/5', border: 'border-macaw/10' },
+  { number: '2', icon: Bot, title: 'AI Generatif', desc: 'Generate soal via few-shot prompting', color: 'text-feather-dark', bg: 'bg-feather/5', border: 'border-feather/10' },
+  { number: '3', icon: Edit3, title: 'Kurasi Guru', desc: 'Review, edit & approve', color: 'text-bee-dark', bg: 'bg-bee/5', border: 'border-bee/10' },
+  { number: '4', icon: Database, title: 'Database', desc: 'Soal tersimpan & siap pakai', color: 'text-fox', bg: 'bg-fox/5', border: 'border-fox/10' },
+  { number: '5', icon: GraduationCap, title: 'Siswa', desc: 'Mengerjakan soal', color: 'text-cardinal', bg: 'bg-cardinal/5', border: 'border-cardinal/10' },
 ];
 
 export const Slide9 = () => (
