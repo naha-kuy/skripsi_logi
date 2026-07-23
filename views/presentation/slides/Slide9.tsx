@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Bot, Database, GraduationCap, Edit3, Sparkles, CheckCircle } from 'lucide-react';
+import { User, Bot, Database, GraduationCap, Edit3 } from 'lucide-react';
 
 const steps = [
   { number: '1', icon: User, title: 'Guru', desc: 'Tentukan KD & topik soal', color: 'text-macaw', bg: 'bg-macaw/5', border: 'border-macaw/10' },
@@ -33,27 +33,6 @@ export const Slide9 = () => (
       </div>
     </div>
 
-    <div className="w-full max-w-6xl mt-5 bg-white border-2 border-slate-200 rounded-2xl p-5">
-      <div className="grid md:grid-cols-2 gap-5">
-        <div className="flex items-start gap-3">
-          <div className="w-10 h-10 rounded-xl bg-feather/10 border border-feather/10 flex items-center justify-center shrink-0 mt-0.5">
-            <Sparkles size={18} className="text-feather-dark" />
-          </div>
-          <div className="text-left">
-            <p className="font-extrabold text-lg md:text-xl text-slate-800 mb-0.5">Few-Shot Prompting</p>
-            <p className="text-base md:text-lg text-slate-600 leading-relaxed">Prompt hardcoded berisi skema jawaban dan 2&ndash;3 contoh soal bergradasi sebagai acuan AI.</p>
-          </div>
-        </div>
-        <div className="flex items-start gap-3">
-          <div className="w-10 h-10 rounded-xl bg-bee/10 border border-bee/10 flex items-center justify-center shrink-0 mt-0.5">
-            <CheckCircle size={18} className="text-bee-dark" />
-          </div>
-          <div className="text-left">
-            <p className="font-extrabold text-lg md:text-xl text-slate-800 mb-0.5">Kurasi &amp; Edit Manual</p>
-            <p className="text-base md:text-lg text-slate-600 leading-relaxed">Guru meninjau, menyunting, dan menyetujui tiap soal sebelum ditayangkan ke siswa.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
 );
